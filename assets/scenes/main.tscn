@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b2n4rnxqxbrf5"]
 
 [ext_resource type="PackedScene" uid="uid://c56awkyjtn0vy" path="res://assets/components/Planet.tscn" id="1_xh4vn"]
-[ext_resource type="PackedScene" uid="uid://b55bx5q0ersb8" path="res://assets/components/Player.tscn" id="2_p2m6u"]
+[ext_resource type="PackedScene" uid="uid://b55bx5q0ersb8" path="res://assets/components/player.tscn" id="2_p2m6u"]
 [ext_resource type="PackedScene" uid="uid://bphuoft8gdy31" path="res://assets/components/enemies/enemy_cobra.tscn" id="3_53y38"]
 
 [node name="Space" type="Node2D"]
@@ -12,4 +12,6 @@
 position = Vector2(-3, -294)
 
 [node name="EnemyBase" parent="." instance=ExtResource("3_53y38")]
-position = Vector2(193, -301)
+position = Vector2(147, -272)
+collision_layer = 4
+collision_mask = 0

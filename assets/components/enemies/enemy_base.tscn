@@ -11,6 +11,7 @@ size = Vector2(1.92561, 4.64546)
 radius = 100.0
 
 [node name="EnemyBase" type="CharacterBody2D"]
+collision_layer = 7
 script = ExtResource("1_g2ro6")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
@@ -36,7 +37,15 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetect"]
 shape = SubResource("CircleShape2D_io8xo")
 
+[node name="PatrolTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="SideDetect" type="RayCast2D" parent="."]
+target_position = Vector2(24, 0)
+
 [connection signal="area_entered" from="PlanetDetect" to="." method="_on_planet_detect_area_entered"]
 [connection signal="area_exited" from="PlanetDetect" to="." method="_on_planet_detect_area_exited"]
 [connection signal="area_entered" from="PlayerDetect" to="." method="_on_player_detect_area_entered"]
 [connection signal="area_exited" from="PlayerDetect" to="." method="_on_player_detect_area_exited"]
+[connection signal="body_entered" from="PlayerDetect" to="." method="_on_player_detect_body_entered"]
+[connection signal="body_exited" from="PlayerDetect" to="." method="_on_player_detect_body_exited"]

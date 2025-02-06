@@ -10,15 +10,24 @@ var current_planet: StaticBody2D = null
 var velocity_gravity: Vector2 = Vector2.ZERO
 var velocity_jump: Vector2 = Vector2.ZERO
 
+var direction_to_planet = null
+var direction_up = null
+var velocity_to_planet = null
+var velocity_up = null
+
 var move_direction: int = 0
 var move_jump: bool = false
 
 func _physics_process(delta: float) -> void:
+	direction_to_planet = null
+	direction_up = null
+	velocity_to_planet = null
+	velocity_up = null
 	if current_planet:
-		var direction_to_planet = atan2(global_position.y - current_planet.global_position.y, global_position.x - current_planet.global_position.x)
-		var direction_up = direction_to_planet+1.57075
-		var velocity_to_planet = Vector2(cos(direction_to_planet), sin(direction_to_planet))
-		var velocity_up = Vector2(cos(direction_up), sin(direction_up))
+		direction_to_planet = atan2(global_position.y - current_planet.global_position.y, global_position.x - current_planet.global_position.x)
+		direction_up = direction_to_planet+1.57075
+		velocity_to_planet = Vector2(cos(direction_to_planet), sin(direction_to_planet))
+		velocity_up = Vector2(cos(direction_up), sin(direction_up))
 		
 		# ROTATION
 		rotation = direction_to_planet+1.57075
@@ -49,11 +58,15 @@ func _on_planet_detect_area_entered(area: Area2D) -> void:
 func _on_planet_detect_area_exited(area: Area2D) -> void:
 	current_planet = null
 
-func _on_player_detect_area_entered(area: Area2D) -> void:
-	current_player = area.get_parent()
+func _on_player_detect_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		current_player = body
+		$PatrolTimer.stop()
 
-func _on_player_detect_area_exited(area: Area2D) -> void:
-	current_player = null
+func _on_player_detect_body_exited(body: Node2D) -> void:
+	if body.name == "Player":
+		current_player = null
+		$PatrolTimer.start(-1)
 
 func move(direction: int):
 	move_direction = direction

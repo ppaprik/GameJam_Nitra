@@ -5,10 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://du4bnpavdcisw" path="res://assets/components/enemies/AI/enemy_ai_move_towards.tscn" id="3_1ocho"]
 
 [node name="EnemyBase" instance=ExtResource("1_ydbtj")]
+SPEED = 2500.0
 
-[node name="Graphics" type="Sprite2D" parent="." index="0"]
+[node name="EnemyAI_move_towards" parent="." index="0" instance=ExtResource("3_1ocho")]
+
+[node name="Graphics" type="Sprite2D" parent="." index="1"]
 position = Vector2(-0.5, 0.500001)
 scale = Vector2(0.042, 0.042)
 texture = ExtResource("2_ebyqg")
-
-[node name="EnemyAI_move_towards" parent="." index="4" instance=ExtResource("3_1ocho")]

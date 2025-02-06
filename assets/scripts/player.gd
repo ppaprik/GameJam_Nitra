@@ -10,13 +10,21 @@ var velocity_jump: Vector2 = Vector2.ZERO
 var velocity_gravity: Vector2 = Vector2.ZERO
 var jumped = false
 
+var direction_to_planet = null
+var direction_up = null
+var velocity_to_planet = null
+var velocity_up = null
 
 func _physics_process(delta: float) -> void:
+	direction_to_planet = null
+	direction_up = null
+	velocity_to_planet = null
+	velocity_up = null
 	if current_planet:
-		var direction_to_planet = atan2(global_position.y - current_planet.global_position.y, global_position.x - current_planet.global_position.x)
-		var direction_up = direction_to_planet+1.57075
-		var velocity_to_planet = Vector2(cos(direction_to_planet), sin(direction_to_planet))
-		var velocity_up = Vector2(cos(direction_up), sin(direction_up))
+		direction_to_planet = atan2(global_position.y - current_planet.global_position.y, global_position.x - current_planet.global_position.x)
+		direction_up = direction_to_planet+1.57075
+		velocity_to_planet = Vector2(cos(direction_to_planet), sin(direction_to_planet))
+		velocity_up = Vector2(cos(direction_up), sin(direction_up))
 		
 		# ROTATION
 		rotation = direction_to_planet+1.57075
@@ -43,6 +51,7 @@ func _physics_process(delta: float) -> void:
 		if direction:
 			velocity_move += (velocity_up) * direction * SPEED
 			$Graphics.flip_h = direction == -1
+			
 			if velocity_jump != Vector2.ZERO:
 				$Graphics.animation = "jump"
 				jumped = true
@@ -63,7 +72,6 @@ func _on_planet_detect_area_entered(area: Area2D) -> void:
 	
 func _on_planet_detect_area_exited(area: Area2D) -> void:
 	current_planet = null
-
 
 func _on_graphics_animation_finished() -> void:
 	if $Graphics.animation == "on_fall":

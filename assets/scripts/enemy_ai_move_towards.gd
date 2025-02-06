@@ -7,4 +7,6 @@ func _enter_tree() -> void:
 
 func _physics_process(delta: float) -> void:
 	if parent.current_player:
-		parent.move(1)
+		parent.move(sign(parent.direction_to_planet - parent.current_player.direction_to_planet) * -1)
+	else:
+		parent.move(0)
