@@ -1,4 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://s0aru26exx8y"]
+[gd_scene load_steps=8 format=3 uid="uid://s0aru26exx8y"]
+
+[ext_resource type="Texture2D" uid="uid://bmqrrquxokcdo" path="res://assets/graphics/sprites/stars/Stars sprite.png" id="1_1k8dn"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bdecb"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
 [sub_resource type="Curve" id="Curve_y7fle"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25098, 1), 0.0, 0.0, 0, 0, Vector2(0.505882, 0), 0.0, 0.0, 0, 0, Vector2(0.760784, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -8,9 +16,8 @@ point_count = 5
 curve = SubResource("Curve_y7fle")
 
 [sub_resource type="Curve" id="Curve_hhl54"]
-min_value = -2.0
-max_value = 2.0
-_data = [Vector2(0, 0.08), 0.0, 0.0, 0, 0]
+min_value = 0.01
+_data = [Vector2(0, 0.02), 0.0, 0.0, 0, 0]
 point_count = 1
 metadata/_snap_count = 50
 metadata/_snap_enabled = true
@@ -23,22 +30,28 @@ particle_flag_disable_z = true
 emission_shape = 6
 emission_ring_axis = Vector3(0, 0, 1)
 emission_ring_height = 1.0
-emission_ring_radius = 30.0
+emission_ring_radius = 20.0
 emission_ring_inner_radius = 100.0
+angle_min = 1.07288e-05
+angle_max = 45.0
 orbit_velocity_min = 0.0100001
 orbit_velocity_max = 0.0100001
 orbit_velocity_curve = SubResource("CurveTexture_s20kl")
 gravity = Vector3(0, 0, 0)
-scale_min = 5.0
-scale_max = 10.0
+scale_min = 0.1
+scale_max = 0.8
 alpha_curve = SubResource("CurveTexture_272ep")
+anim_offset_max = 1.0
 
 [node name="Stars" type="Node2D"]
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_bdecb")
 scale = Vector2(9, 9)
-amount = 500
+amount = 6000
 process_material = SubResource("ParticleProcessMaterial_qnfov")
+texture = ExtResource("1_1k8dn")
 lifetime = 10.0
 randomness = 1.0
 fixed_fps = 60
