@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c56awkyjtn0vy"]
+[gd_scene load_steps=6 format=3 uid="uid://c56awkyjtn0vy"]
 
 [ext_resource type="Texture2D" uid="uid://1gkunryp53d6" path="res://assets/graphics/planets/Starter Planet Alternative.png" id="1_wdj01"]
+[ext_resource type="PackedScene" uid="uid://s0aru26exx8y" path="res://assets/components/Stars.tscn" id="2_jsfx1"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qp8h7"]
 friction = 0.0
@@ -31,3 +32,5 @@ monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gravity"]
 shape = SubResource("CircleShape2D_dowmm")
+
+[node name="Stars" parent="." instance=ExtResource("2_jsfx1")]
