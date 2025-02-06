@@ -1,7 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://b55bx5q0ersb8"]
 
 [ext_resource type="Script" path="res://assets/scripts/player.gd" id="1_0tkcj"]
-[ext_resource type="Texture2D" uid="uid://b1g0k7w38x4br" path="res://assets/graphics/player.png" id="1_fh726"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ydbbf"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qplst"]
 size = Vector2(1.92561, 4.64546)
@@ -17,10 +24,9 @@ floor_block_on_wall = false
 platform_floor_layers = 16711680
 script = ExtResource("1_0tkcj")
 
-[node name="Graphics" type="Sprite2D" parent="."]
-position = Vector2(-1, 0)
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("1_fh726")
+[node name="Graphics" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ydbbf")
+animation = &"idle"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
@@ -36,6 +42,7 @@ rotation_smoothing_enabled = true
 visible = false
 collision_layer = 0
 collision_mask = 2
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlanetDetect"]
 shape = SubResource("CircleShape2D_e1a6p")
