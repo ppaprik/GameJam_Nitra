@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://b55bx5q0ersb8"]
+
+[ext_resource type="Script" path="res://assets/scripts/player.gd" id="1_0tkcj"]
+[ext_resource type="Texture2D" uid="uid://b1g0k7w38x4br" path="res://assets/graphics/player.png" id="1_fh726"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qplst"]
+size = Vector2(1.92561, 4.64546)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e1a6p"]
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 2
+motion_mode = 1
+wall_min_slide_angle = 3.14159
+floor_stop_on_slope = false
+floor_block_on_wall = false
+platform_floor_layers = 16711680
+script = ExtResource("1_0tkcj")
+
+[node name="Graphics" type="Sprite2D" parent="."]
+position = Vector2(-1, 0)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_fh726")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+scale = Vector2(4.15453, 4.09002)
+shape = SubResource("RectangleShape2D_qplst")
+
+[node name="Camera" type="Camera2D" parent="."]
+ignore_rotation = false
+zoom = Vector2(2, 2)
+rotation_smoothing_enabled = true
+
+[node name="PlanetDetect" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlanetDetect"]
+shape = SubResource("CircleShape2D_e1a6p")
+
+[node name="Grounded" type="RayCast2D" parent="."]
+target_position = Vector2(0, 11)
+collision_mask = 2
+
+[node name="JumpTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="area_entered" from="PlanetDetect" to="." method="_on_planet_detect_area_entered"]
+[connection signal="area_exited" from="PlanetDetect" to="." method="_on_planet_detect_area_exited"]

@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://c56awkyjtn0vy"]
+
+[ext_resource type="Texture2D" uid="uid://1gkunryp53d6" path="res://assets/graphics/planets/Starter Planet Alternative.png" id="1_wdj01"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qp8h7"]
+friction = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0l65f"]
+radius = 250.002
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dowmm"]
+radius = 1000.0
+
+[node name="Planet" type="StaticBody2D"]
+collision_layer = 2
+physics_material_override = SubResource("PhysicsMaterial_qp8h7")
+
+[node name="Graphics" type="Sprite2D" parent="."]
+texture = ExtResource("1_wdj01")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_0l65f")
+
+[node name="Gravity" type="Area2D" parent="."]
+light_mask = 0
+visibility_layer = 0
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gravity"]
+shape = SubResource("CircleShape2D_dowmm")
