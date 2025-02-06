@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd6t7nhbdlht8"]
+
+[ext_resource type="Script" path="res://assets/scripts/enemy_base.gd" id="1_g2ro6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2xdo6"]
+size = Vector2(1.92561, 4.64546)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gpvrg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_io8xo"]
+radius = 100.0
+
+[node name="EnemyBase" type="CharacterBody2D"]
+script = ExtResource("1_g2ro6")
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+scale = Vector2(4.15453, 4.09002)
+shape = SubResource("RectangleShape2D_2xdo6")
+
+[node name="PlanetDetect" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlanetDetect"]
+shape = SubResource("CircleShape2D_gpvrg")
+
+[node name="Grounded" type="RayCast2D" parent="."]
+target_position = Vector2(0, 11)
+collision_mask = 2
+
+[node name="PlayerDetect" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetect"]
+shape = SubResource("CircleShape2D_io8xo")
+
+[connection signal="area_entered" from="PlanetDetect" to="." method="_on_planet_detect_area_entered"]
+[connection signal="area_exited" from="PlanetDetect" to="." method="_on_planet_detect_area_exited"]
+[connection signal="area_entered" from="PlayerDetect" to="." method="_on_player_detect_area_entered"]
+[connection signal="area_exited" from="PlayerDetect" to="." method="_on_player_detect_area_exited"]

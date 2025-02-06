@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bc3ikx2s5rgjy"
-path="res://.godot/imported/Health bar sprite.png-3a0adc757012d37afceeafa413e40e0c.ctex"
+uid="uid://voslup7ttva0"
+path="res://.godot/imported/Spider Sprite.png-d4b9e975fd16c9db99118b437effc4d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/Sprites/Health Bar/Health bar sprite.png"
-dest_files=["res://.godot/imported/Health bar sprite.png-3a0adc757012d37afceeafa413e40e0c.ctex"]
+source_file="res://assets/graphics/Sprites/enemies/Spider Sprite.png"
+dest_files=["res://.godot/imported/Spider Sprite.png-d4b9e975fd16c9db99118b437effc4d8.ctex"]
 
 [params]
 
