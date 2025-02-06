@@ -35,6 +35,8 @@ func _physics_process(delta: float) -> void:
 		var direction := Input.get_axis("move_L", "move_R")
 		if direction:
 			velocity_move += (velocity_up) * direction * SPEED
+			
+			$Graphics.flip_h = direction == -1
 		
 		velocity = (velocity_gravity + velocity_jump + velocity_move) * delta
 	move_and_slide()
