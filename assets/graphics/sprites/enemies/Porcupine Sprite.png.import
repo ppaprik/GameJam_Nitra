@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brgh26ago05vb"
-path="res://.godot/imported/planet_test.png-338702ce0b9ed19d4a35c3f74af39694.ctex"
+uid="uid://bdldebwgtid15"
+path="res://.godot/imported/Porcupine Sprite.png-5be5f5444250b4f254438a65b6bb8e3f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/graphics/planets/planet_test.png"
-dest_files=["res://.godot/imported/planet_test.png-338702ce0b9ed19d4a35c3f74af39694.ctex"]
+source_file="res://assets/graphics/sprites/enemies/Porcupine Sprite.png"
+dest_files=["res://.godot/imported/Porcupine Sprite.png-5be5f5444250b4f254438a65b6bb8e3f.ctex"]
 
 [params]
 
