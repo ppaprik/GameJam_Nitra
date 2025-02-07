@@ -28,11 +28,7 @@ monitorable = false
 shape = SubResource("CircleShape2D_gpvrg")
 
 [node name="Grounded" type="RayCast2D" parent="."]
-<<<<<<< Updated upstream
 target_position = Vector2(0, 12)
-=======
-target_position = Vector2(0, 15)
->>>>>>> Stashed changes
 collision_mask = 3
 
 [node name="PlayerDetect" type="Area2D" parent="."]
