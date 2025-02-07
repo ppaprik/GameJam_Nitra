@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://b2n4rnxqxbrf5"]
 
 [ext_resource type="PackedScene" uid="uid://c56awkyjtn0vy" path="res://assets/components/Planet.tscn" id="1_xh4vn"]
-[ext_resource type="PackedScene" uid="uid://daltpcrt8anqt" path="res://assets/components/Player.tscn" id="2_p2m6u"]
+[ext_resource type="PackedScene" uid="uid://drj1f5a4c0p4v" path="res://assets/components/player.tscn" id="2_p2m6u"]
 [ext_resource type="PackedScene" uid="uid://bphuoft8gdy31" path="res://assets/components/enemies/enemy_cobra.tscn" id="3_53y38"]
-[ext_resource type="PackedScene" uid="uid://co4upyfbio4p5" path="res://assets/components/enemies/Cobra.tscn" id="4_bfsle"]
+[ext_resource type="PackedScene" uid="uid://cyihi8vmrq4yd" path="res://assets/components/enemies/Cobra.tscn" id="4_bfsle"]
 
 [node name="Space" type="Node2D"]
 
@@ -17,6 +17,9 @@ SPEED = 10000.0
 position = Vector2(-276, -65)
 collision_layer = 4
 collision_mask = 0
+safe_margin = 0.08
+damage = 5
 
 [node name="EnemyBase2" parent="." instance=ExtResource("4_bfsle")]
 position = Vector2(-287, 15)
+safe_margin = 0.08

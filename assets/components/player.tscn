@@ -1,39 +1,41 @@
-[gd_scene load_steps=43 format=3 uid="uid://daltpcrt8anqt"]
+[gd_scene load_steps=46 format=3 uid="uid://drj1f5a4c0p4v"]
 
 [ext_resource type="Script" path="res://assets/scripts/player.gd" id="1_0tkcj"]
-[ext_resource type="Texture2D" uid="uid://chyrnom35klhj" path="res://assets/graphics/Sprites/Player/Player sprite.png" id="2_3c28g"]
-[ext_resource type="Texture2D" uid="uid://chyrnom35klhj" path="res://assets/graphics/sprites/player/Player sprite.png" id="2_t1rgp"]
+[ext_resource type="Texture2D" uid="uid://cvjhh2gq7lhxg" path="res://assets/graphics/Sprites/Player/Player sprite.png" id="2_3c28g"]
+[ext_resource type="Texture2D" uid="uid://colemde4r6r3f" path="res://assets/graphics/Sprites/Health Bar/BG.png" id="3_x405y"]
+[ext_resource type="Texture2D" uid="uid://bx7y0fka5x3fl" path="res://assets/graphics/Sprites/Health Bar/FRAME.png" id="4_53mla"]
+[ext_resource type="Texture2D" uid="uid://dwlwxq8mob0gg" path="res://assets/graphics/Sprites/Health Bar/BAR.png" id="5_piebu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oyoeu"]
-atlas = ExtResource("2_t1rgp")
+atlas = ExtResource("2_3c28g")
 region = Rect2(0, 224, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_loy7h"]
-atlas = ExtResource("2_t1rgp")
+atlas = ExtResource("2_3c28g")
 region = Rect2(32, 224, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4s0tu"]
-atlas = ExtResource("2_t1rgp")
+atlas = ExtResource("2_3c28g")
 region = Rect2(64, 224, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rt84d"]
-atlas = ExtResource("2_t1rgp")
+atlas = ExtResource("2_3c28g")
 region = Rect2(96, 224, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_srvj6"]
-atlas = ExtResource("2_t1rgp")
+atlas = ExtResource("2_3c28g")
 region = Rect2(128, 224, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_slfoy"]
-atlas = ExtResource("2_t1rgp")
+atlas = ExtResource("2_3c28g")
 region = Rect2(160, 224, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_muc0t"]
-atlas = ExtResource("2_t1rgp")
+atlas = ExtResource("2_3c28g")
 region = Rect2(192, 224, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bgssx"]
-atlas = ExtResource("2_t1rgp")
+atlas = ExtResource("2_3c28g")
 region = Rect2(224, 224, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xnvew"]
@@ -171,7 +173,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bgssx")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 5.0
 }, {
@@ -291,6 +293,9 @@ height = 5.50119
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_et7fo"]
 size = Vector2(8, 2)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbj5m"]
+size = Vector2(16, 19)
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 6
 motion_mode = 1
@@ -333,6 +338,28 @@ collision_mask = 6
 position = Vector2(0, 11)
 shape = SubResource("RectangleShape2D_et7fo")
 
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_tbj5m")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+texture_filter = 1
+offset_left = -16.0
+offset_top = -43.0
+offset_right = 16.0
+offset_bottom = -11.0
+value = 100.0
+texture_under = ExtResource("3_x405y")
+texture_over = ExtResource("4_53mla")
+texture_progress = ExtResource("5_piebu")
+
 [connection signal="animation_finished" from="Graphics" to="." method="_on_graphics_animation_finished"]
 [connection signal="area_entered" from="PlanetDetect" to="." method="_on_planet_detect_area_entered"]
 [connection signal="area_exited" from="PlanetDetect" to="." method="_on_planet_detect_area_exited"]
+[connection signal="area_shape_entered" from="HurtBox" to="." method="_on_hurt_box_area_shape_entered"]
+[connection signal="value_changed" from="TextureProgressBar" to="." method="_on_texture_progress_bar_value_changed"]

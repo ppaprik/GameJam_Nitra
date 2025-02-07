@@ -1,7 +1,7 @@
-[gd_scene load_steps=33 format=3 uid="uid://co4upyfbio4p5"]
+[gd_scene load_steps=33 format=3 uid="uid://cyihi8vmrq4yd"]
 
 [ext_resource type="PackedScene" uid="uid://cd6t7nhbdlht8" path="res://assets/components/enemies/enemy_base.tscn" id="1_5l3xd"]
-[ext_resource type="Texture2D" uid="uid://cc73uhc330f7h" path="res://assets/graphics/sprites/enemies/Cobra Sprite.png" id="2_xapob"]
+[ext_resource type="Texture2D" uid="uid://cmxy4px8x4cnq" path="res://assets/graphics/sprites/enemies/Cobra Sprite.png" id="2_xapob"]
 [ext_resource type="PackedScene" uid="uid://du4bnpavdcisw" path="res://assets/components/enemies/AI/enemy_ai_move_towards.tscn" id="3_waiqh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hnut7"]
@@ -223,7 +223,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="EnemyBase" instance=ExtResource("1_5l3xd")]
+[node name="Cobra" instance=ExtResource("1_5l3xd")]
 
 [node name="Graphics" type="AnimatedSprite2D" parent="." index="0"]
 texture_filter = 1
@@ -236,11 +236,11 @@ frame_progress = 0.747415
 
 [node name="EnemyAI_move_towards" parent="." index="2" instance=ExtResource("3_waiqh")]
 
-[node name="Grounded" parent="." index="4"]
-target_position = Vector2(0, 18)
-
 [node name="CollisionShape2D" parent="PlayerDetect" index="0"]
 visible = false
 
-[node name="SideDetect" parent="." index="6"]
+[node name="Grounded" parent="." index="6"]
+target_position = Vector2(0, 18)
+
+[node name="SideDetect" parent="." index="7"]
 target_position = Vector2(17, 0)

@@ -17,8 +17,9 @@ var velocity_up = null
 var jumped = false
 var jump_finished = false
 
+
 func _physics_process(delta: float) -> void:
-	if $Health.value != 0:
+	if $TextureProgressBar.value != 0:
 		direction_to_planet = null
 		direction_up = null
 		velocity_to_planet = null
@@ -69,6 +70,11 @@ func _physics_process(delta: float) -> void:
 			velocity = (velocity_gravity + velocity_jump + velocity_move) * delta
 			
 		move_and_slide()
+	else:
+		velocity_gravity += velocity_to_planet * -1 * GRAVITY
+		velocity = velocity_gravity * delta
+		move_and_slide()
+
 
 func _on_planet_detect_area_entered(area: Area2D) -> void:
 	current_planet = area.get_parent()
@@ -83,10 +89,12 @@ func _on_graphics_animation_finished() -> void:
 	if $Graphics.animation == "on_fall":
 		jump_finished = false
 
-func _on_hurt_box_area_entered(area: Area2D) -> void:
-	$Health.value = $Health.value - area.damage
+func _on_hurt_box_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	$TextureProgressBar.value = $TextureProgressBar.value - area.damage
 	area.acknowlaged()
 
-func _on_health_value_changed(value: float) -> void:
+func _on_texture_progress_bar_value_changed(value: float) -> void:
 	if value == 0:
+		$TextureProgressBar.visible = false
 		$Graphics.play("die")
+	

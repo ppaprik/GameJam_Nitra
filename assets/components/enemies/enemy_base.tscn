@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://assets/scripts/damage_box.gd" id="2_3heg2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2xdo6"]
-size = Vector2(1.92561, 4.64546)
+size = Vector2(4.33262, 6.84593)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gpvrg"]
 
@@ -12,11 +12,13 @@ size = Vector2(1.92561, 4.64546)
 radius = 100.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ypdag"]
-size = Vector2(26, 6)
+size = Vector2(36, 7)
 
 [node name="EnemyBase" type="CharacterBody2D"]
 collision_layer = 7
+safe_margin = 0.2
 script = ExtResource("1_g2ro6")
+damage = 20
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 scale = Vector2(4.15453, 4.09002)
