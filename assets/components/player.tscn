@@ -1,10 +1,10 @@
 [gd_scene load_steps=47 format=3 uid="uid://drj1f5a4c0p4v"]
 
 [ext_resource type="Script" path="res://assets/scripts/player.gd" id="1_0tkcj"]
-[ext_resource type="Texture2D" uid="uid://cuihh73evmhmu" path="res://assets/graphics/Sprites/Player/Player sprite.png" id="2_3c28g"]
-[ext_resource type="Texture2D" uid="uid://h764a4iu1eaq" path="res://assets/graphics/Sprites/Health Bar/BG.png" id="3_x405y"]
-[ext_resource type="Texture2D" uid="uid://3kr00kxkiiap" path="res://assets/graphics/Sprites/Health Bar/FRAME.png" id="4_53mla"]
-[ext_resource type="Texture2D" uid="uid://dexvpkbssr70b" path="res://assets/graphics/Sprites/Health Bar/BAR.png" id="5_piebu"]
+[ext_resource type="Texture2D" uid="uid://78jgr840siw6" path="res://assets/graphics/Sprites/Player/Player sprite.png" id="2_3c28g"]
+[ext_resource type="Texture2D" uid="uid://dtqrx12ehntmo" path="res://assets/graphics/Sprites/Health Bar/BG.png" id="3_x405y"]
+[ext_resource type="Texture2D" uid="uid://bsf1d0k5vmyid" path="res://assets/graphics/Sprites/Health Bar/FRAME.png" id="4_53mla"]
+[ext_resource type="Texture2D" uid="uid://dis7nrnpkiwe3" path="res://assets/graphics/Sprites/Health Bar/BAR.png" id="5_piebu"]
 [ext_resource type="PackedScene" uid="uid://cjoo5wxfyqd6b" path="res://assets/components/weapons/bow.tscn" id="6_i7u48"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oyoeu"]
