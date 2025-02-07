@@ -8,6 +8,8 @@ extends CharacterBody2D
 @export var damage: float = 5
 @export var damage_period: float = 0.2
 @export var health: int = 10
+@onready var die_fx: AudioStreamPlayer2D = $Die_fx
+@onready var hurt_fx: AudioStreamPlayer2D = $Hurt_fx
 
 var current_player: CharacterBody2D = null
 var current_planet: StaticBody2D = null
@@ -123,6 +125,7 @@ func jump():
 func _on_texture_progress_bar_value_changed(value: float) -> void:
 	if value == 0:
 		$Graphics.play("die")
+		die_fx.play()
 		$DamageBox.set_deferred("monitorable", false)
 		$Collision.set_deferred("disabled", true)
 		$TextureProgressBar.visible = false
@@ -130,7 +133,7 @@ func _on_texture_progress_bar_value_changed(value: float) -> void:
 
 func _on_hurt_box_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	$TextureProgressBar.value = $TextureProgressBar.value - area.damage
-	
+	hurt_fx.play()
 	if area.get_parent().get_class() == "CharacterBody2D":
 		get_parent().remove_child(area.get_parent())
 

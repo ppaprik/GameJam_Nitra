@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=3 uid="uid://bkj6510fqey1c"]
 
 [ext_resource type="PackedScene" uid="uid://cd6t7nhbdlht8" path="res://assets/components/enemies/enemy_base.tscn" id="1_adou5"]
-[ext_resource type="Texture2D" uid="uid://c4rdijdpj4gon" path="res://assets/graphics/Sprites/enemies/Phoenixling Sprite.png" id="2_5fk5d"]
+[ext_resource type="Texture2D" uid="uid://s2fubf68hvnk" path="res://assets/graphics/Sprites/enemies/Phoenixling Sprite.png" id="2_5fk5d"]
 [ext_resource type="PackedScene" uid="uid://2bm2y7t1mdl1" path="res://assets/components/enemies/AI/enemy_ai_move_towards.tscn" id="3_3wumw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kc2tv"]
@@ -198,16 +198,26 @@ animations = [{
 [node name="Phoenix" instance=ExtResource("1_adou5")]
 
 [node name="Collision" parent="." index="0"]
-position = Vector2(-0.5, 0.5)
+visible = false
+position = Vector2(-0.5, -8.5)
+
+[node name="CollisionShape2D" parent="PlanetDetect" index="0"]
+visible = false
+
+[node name="PlayerDetect" parent="." index="2"]
+visible = false
 
 [node name="CollisionShape2D" parent="DamageBox" index="0"]
-position = Vector2(-0.5, 0.5)
+position = Vector2(0, 19.5)
 
 [node name="Grounded" parent="." index="4"]
-target_position = Vector2(0, 48)
+target_position = Vector2(0, 68)
 
 [node name="SideDetect" parent="." index="5"]
 target_position = Vector2(16, 0)
+
+[node name="HurtBox" parent="." index="7"]
+visible = false
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 position = Vector2(-0.5, 0.5)
