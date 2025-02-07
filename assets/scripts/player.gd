@@ -26,7 +26,7 @@ func _ready() -> void:
 	velocity = Vector2(-1000, 0)
 	$CameraZoom.start()
 	$Freeze.start()
-
+	
 func _physics_process(delta: float) -> void:
 	if $TextureProgressBar.value != 0 and $Freeze.is_stopped():
 		direction_to_planet = null
@@ -122,6 +122,7 @@ func _on_hurt_box_area_shape_entered(area_rid: RID, area: Area2D, area_shape_ind
 		area.acknowlaged()
 
 func _on_texture_progress_bar_value_changed(value: float) -> void:
+	Global.player_health = value
 	if value == 0:
 		$TextureProgressBar.visible = false
 		$Graphics.play("die")

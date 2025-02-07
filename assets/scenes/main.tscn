@@ -55,3 +55,9 @@ position = Vector2(169, -296)
 
 [node name="Cobra3" parent="." instance=ExtResource("4_bfsle")]
 position = Vector2(338, -123)
+
+[node name="Cobra4" parent="." instance=ExtResource("4_bfsle")]
+position = Vector2(1983, -509)
+
+[node name="Cobra5" parent="." instance=ExtResource("4_bfsle")]
+position = Vector2(1976, -190)

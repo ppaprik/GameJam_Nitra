@@ -1,14 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://f0dwl012kug2"]
+[gd_scene load_steps=6 format=3 uid="uid://f0dwl012kug2"]
 
 [ext_resource type="PackedScene" uid="uid://cd6t7nhbdlht8" path="res://assets/components/enemies/enemy_base.tscn" id="1_ydbtj"]
-[ext_resource type="Texture2D" uid="uid://dr4t40l7msmu1" path="res://assets/graphics/player.png" id="2_ebyqg"]
+[ext_resource type="Texture2D" uid="uid://d3mkd5kgjnql8" path="res://assets/graphics/player.png" id="2_ebyqg"]
 [ext_resource type="PackedScene" uid="uid://dvb0mlxwxjlc4" path="res://assets/components/enemies/AI/enemy_ai_move_towards_jump.tscn" id="3_50w7h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6ejt"]
+atlas = ExtResource("2_ebyqg")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u1j7q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6ejt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="enemy_cobra" instance=ExtResource("1_ydbtj")]
 
-[node name="Graphics" type="Sprite2D" parent="." index="0"]
-position = Vector2(-0.5, 0.500001)
-scale = Vector2(0.042, 0.042)
-texture = ExtResource("2_ebyqg")
+[node name="Graphics" type="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(0.068, 0.068)
+sprite_frames = SubResource("SpriteFrames_u1j7q")
 
 [node name="EnemyAI_move_towards_jump" parent="." index="1" instance=ExtResource("3_50w7h")]

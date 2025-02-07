@@ -1,7 +1,7 @@
 [gd_scene load_steps=33 format=3 uid="uid://cyihi8vmrq4yd"]
 
 [ext_resource type="PackedScene" uid="uid://cd6t7nhbdlht8" path="res://assets/components/enemies/enemy_base.tscn" id="1_5l3xd"]
-[ext_resource type="Texture2D" uid="uid://cpwmjfxfc5fpi" path="res://assets/graphics/Sprites/enemies/Cobra Sprite.png" id="2_xapob"]
+[ext_resource type="Texture2D" uid="uid://vmq5ukhlf77y" path="res://assets/graphics/Sprites/enemies/Cobra Sprite.png" id="2_xapob"]
 [ext_resource type="PackedScene" uid="uid://2bm2y7t1mdl1" path="res://assets/components/enemies/AI/enemy_ai_move_towards.tscn" id="3_waiqh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hnut7"]
@@ -230,7 +230,9 @@ texture_filter = 1
 position = Vector2(5, -24)
 scale = Vector2(2.5625, 2.5625)
 sprite_frames = SubResource("SpriteFrames_q0rrd")
-animation = &"run"
+animation = &"attack"
 autoplay = "idle"
 
 [node name="EnemyAI_move_towards_jump" parent="." index="1" instance=ExtResource("3_waiqh")]
+
+[connection signal="animation_finished" from="Graphics" to="." method="_on_graphics_animation_finished"]

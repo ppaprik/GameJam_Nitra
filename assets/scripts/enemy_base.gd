@@ -21,6 +21,10 @@ var velocity_up = null
 
 var move_direction: int = 0
 var move_jump: bool = false
+var jumped = false
+var attacked = false
+var player = null
+
 
 func _enter_tree() -> void:
 	$PlayerDetect/CollisionShape2D.shape.radius = DETECTION_RANGE
@@ -67,6 +71,19 @@ func _physics_process(delta: float) -> void:
 					velocity_move += (velocity_up) * move_direction * SPEED
 			
 			velocity = (velocity_gravity + velocity_jump + velocity_move) * delta
+			
+			
+			if Global.player_health == 0:
+				$Graphics.play("idle")
+			elif attacked:
+				$Graphics.play("attack")
+			elif move_jump or jumped:
+				$Graphics.play("jump")
+				jumped = true
+			elif move_direction:
+				$Graphics.play("run")
+			else:
+				$Graphics.play("idle")
 		
 		if not current_player:
 			pass
@@ -94,6 +111,7 @@ func _on_player_detect_body_exited(body: Node2D) -> void:
 		current_player = null
 
 func _on_attack_wait_timeout() -> void:
+	attacked = true
 	$DamageBox.set_collision_layer_value(5, true)
 
 func move(direction: int):
@@ -115,3 +133,11 @@ func _on_hurt_box_area_shape_entered(area_rid: RID, area: Area2D, area_shape_ind
 	
 	if area.get_parent().get_class() == "CharacterBody2D":
 		get_parent().remove_child(area.get_parent())
+
+
+func _on_graphics_animation_finished() -> void:
+	if $Graphics.animation == "jump":
+		jumped = false
+		
+	if $Graphics.animation == "attacked":
+		attacked = false
