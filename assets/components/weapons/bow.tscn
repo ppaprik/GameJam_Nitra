@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjoo5wxfyqd6b"]
+
+[ext_resource type="PackedScene" uid="uid://bher7e1g4u0d8" path="res://assets/components/weapons/weapon_base.tscn" id="1_0elds"]
+[ext_resource type="PackedScene" uid="uid://js3ccgxjputi" path="res://assets/components/weapons/bullets/arrow.tscn" id="2_4x53i"]
+[ext_resource type="Texture2D" uid="uid://dagmcop5c52fq" path="res://assets/graphics/Sprites/bow/bow sprite.png" id="2_gbfan"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0pyg"]
+atlas = ExtResource("2_gbfan")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bc275"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0pyg")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Bow" instance=ExtResource("1_0elds")]
+bullet = ExtResource("2_4x53i")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+rotation = 2.35619
+sprite_frames = SubResource("SpriteFrames_bc275")

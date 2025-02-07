@@ -19,12 +19,17 @@ var jump_finished = false
 
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("shoot"):
+		$Weapon.shoot()
+	
 	if $TextureProgressBar.value != 0:
 		direction_to_planet = null
 		direction_up = null
 		velocity_to_planet = null
 		velocity_up = null
 		
+		var mouse_p = get_global_mouse_position()
+		$Weapon.rotation = atan2(mouse_p.y - global_position.y, mouse_p.x - global_position.x) - rotation
 		if current_planet:
 			direction_to_planet = atan2(global_position.y - current_planet.global_position.y, global_position.x - current_planet.global_position.x)
 			direction_up = direction_to_planet+1.57075
@@ -75,9 +80,8 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity_gravity * delta
 		move_and_slide()
 
-
 func _on_planet_detect_area_entered(area: Area2D) -> void:
-	current_planet = area.get_parent()
+		current_planet = area.get_parent()
 
 func _on_planet_detect_area_exited(_area: Area2D) -> void:
 	current_planet = null
@@ -91,7 +95,8 @@ func _on_graphics_animation_finished() -> void:
 
 func _on_hurt_box_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	$TextureProgressBar.value = $TextureProgressBar.value - area.damage
-	area.acknowlaged()
+	if area.name == "DamageBox":
+		area.acknowlaged()
 
 func _on_texture_progress_bar_value_changed(value: float) -> void:
 	if value == 0:

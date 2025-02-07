@@ -1,8 +1,8 @@
 [gd_scene load_steps=33 format=3 uid="uid://cyihi8vmrq4yd"]
 
 [ext_resource type="PackedScene" uid="uid://cd6t7nhbdlht8" path="res://assets/components/enemies/enemy_base.tscn" id="1_5l3xd"]
-[ext_resource type="Texture2D" uid="uid://cmxy4px8x4cnq" path="res://assets/graphics/sprites/enemies/Cobra Sprite.png" id="2_xapob"]
-[ext_resource type="PackedScene" uid="uid://du4bnpavdcisw" path="res://assets/components/enemies/AI/enemy_ai_move_towards.tscn" id="3_waiqh"]
+[ext_resource type="Texture2D" uid="uid://cmxy4px8x4cnq" path="res://assets/graphics/Sprites/enemies/Cobra Sprite.png" id="2_xapob"]
+[ext_resource type="PackedScene" uid="uid://2bm2y7t1mdl1" path="res://assets/components/enemies/AI/enemy_ai_move_towards.tscn" id="3_waiqh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hnut7"]
 atlas = ExtResource("2_xapob")
@@ -137,7 +137,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xns1s")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 5.0
 }, {
@@ -160,7 +160,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i4y4x")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 7.0
 }, {
@@ -230,17 +230,7 @@ texture_filter = 1
 position = Vector2(5, -24)
 scale = Vector2(2.5625, 2.5625)
 sprite_frames = SubResource("SpriteFrames_q0rrd")
-animation = &"attack"
+animation = &"die"
 autoplay = "idle"
-frame_progress = 0.747415
 
-[node name="EnemyAI_move_towards" parent="." index="2" instance=ExtResource("3_waiqh")]
-
-[node name="CollisionShape2D" parent="PlayerDetect" index="0"]
-visible = false
-
-[node name="Grounded" parent="." index="6"]
-target_position = Vector2(0, 18)
-
-[node name="SideDetect" parent="." index="7"]
-target_position = Vector2(17, 0)
+[node name="EnemyAI_move_towards_jump" parent="." index="1" instance=ExtResource("3_waiqh")]

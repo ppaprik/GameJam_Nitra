@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://js3ccgxjputi"]
+
+[ext_resource type="PackedScene" uid="uid://5vh6y25f7e0s" path="res://assets/components/weapons/bullets/bullet_base.tscn" id="1_5kxj7"]
+[ext_resource type="Texture2D" uid="uid://bo6kghs0s7q57" path="res://assets/graphics/Sprites/bow/arrow sprite.png" id="2_athdo"]
+
+[node name="BulletBase" instance=ExtResource("1_5kxj7")]
+
+[node name="DamageBox" parent="." index="0"]
+collision_layer = 64
+
+[node name="Sprite2D" parent="." index="1"]
+texture_filter = 1
+rotation = 0.785397
+scale = Vector2(0.632305, 0.632305)
+texture = ExtResource("2_athdo")

@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://5vh6y25f7e0s"]
+
+[ext_resource type="Script" path="res://assets/scripts/damage_box_weapon.gd" id="1_7jhvo"]
+[ext_resource type="Script" path="res://assets/scripts/bullet_base.gd" id="1_rtur4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6b46j"]
+size = Vector2(6, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aiidr"]
+size = Vector2(2, 2)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3txfa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xl6lw"]
+size = Vector2(6, 2)
+
+[node name="BulletBase" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_rtur4")
+
+[node name="DamageBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_7jhvo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageBox"]
+shape = SubResource("RectangleShape2D_6b46j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_aiidr")
+
+[node name="PlanetDetect" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlanetDetect"]
+shape = SubResource("CircleShape2D_3txfa")
+
+[node name="PlanetHit" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlanetHit"]
+scale = Vector2(0.27, 0.375)
+shape = SubResource("RectangleShape2D_xl6lw")
+
+[connection signal="area_entered" from="PlanetDetect" to="." method="_on_planet_detect_area_entered"]
+[connection signal="body_shape_entered" from="PlanetHit" to="." method="_on_planet_hit_body_shape_entered"]

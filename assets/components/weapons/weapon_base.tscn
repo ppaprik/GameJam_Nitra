@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bher7e1g4u0d8"]
+
+[ext_resource type="Script" path="res://assets/scripts/weapon_base.gd" id="1_m4g8u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xtcwi"]
+size = Vector2(4, 4)
+
+[node name="WeaponBase" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_m4g8u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xtcwi")
