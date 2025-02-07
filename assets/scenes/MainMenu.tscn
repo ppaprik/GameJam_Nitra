@@ -113,7 +113,7 @@ text = "Quit"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1039, 404)
+position = Vector2(952, 385)
 scale = Vector2(4.46875, 4.46875)
 sprite_frames = SubResource("SpriteFrames_04eon")
 animation = &"idle"
@@ -132,8 +132,9 @@ volume_db = -10.0
 
 [node name="StarterPlanetAlternative" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(1053, 25)
-scale = Vector2(1.094, 1.094)
+position = Vector2(1092, -36)
+rotation = 4.2394
+scale = Vector2(1.26994, 1.26994)
 texture = ExtResource("4_qulmm")
 
 [connection signal="mouse_entered" from="Control/VBoxContainer/Start" to="." method="_on_start_mouse_entered"]
