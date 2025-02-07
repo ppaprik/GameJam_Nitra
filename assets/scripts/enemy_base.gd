@@ -5,6 +5,8 @@ extends CharacterBody2D
 @export var GRAVITY: int = 1000
 @export var JUMP_VELOCITY: int = 20000
 @export var DETECTION_RANGE: int = 100
+@export var damage = 5
+@export var attack_period = 0.5
 
 var current_player: CharacterBody2D = null
 var current_planet: StaticBody2D = null
@@ -21,6 +23,8 @@ var move_jump: bool = false
 
 func _enter_tree() -> void:
 	$PlayerDetect/CollisionShape2D.shape.radius = DETECTION_RANGE
+	$DamageBox.damage = damage
+	$AttackWait.wait_time = attack_period
 
 func _physics_process(delta: float) -> void:
 	direction_to_planet = null
@@ -79,6 +83,9 @@ func _on_player_detect_body_entered(body: Node2D) -> void:
 func _on_player_detect_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
 		current_player = null
+
+func _on_attack_wait_timeout() -> void:
+	$DamageBox.set_collision_layer_value(5, true)
 
 func move(direction: int):
 	move_direction = direction

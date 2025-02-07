@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cd6t7nhbdlht8"]
+[gd_scene load_steps=7 format=3 uid="uid://cd6t7nhbdlht8"]
 
 [ext_resource type="Script" path="res://assets/scripts/enemy_base.gd" id="1_g2ro6"]
+[ext_resource type="Script" path="res://assets/scripts/damage_box.gd" id="2_3heg2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2xdo6"]
 size = Vector2(1.92561, 4.64546)
@@ -9,6 +10,9 @@ size = Vector2(1.92561, 4.64546)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_io8xo"]
 radius = 100.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ypdag"]
+size = Vector2(26, 6)
 
 [node name="EnemyBase" type="CharacterBody2D"]
 collision_layer = 7
@@ -27,18 +31,31 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlanetDetect"]
 shape = SubResource("CircleShape2D_gpvrg")
 
-[node name="Grounded" type="RayCast2D" parent="."]
-target_position = Vector2(0, 12)
-collision_mask = 3
-
 [node name="PlayerDetect" type="Area2D" parent="."]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetect"]
 shape = SubResource("CircleShape2D_io8xo")
 
+[node name="DamageBox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+script = ExtResource("2_3heg2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageBox"]
+shape = SubResource("RectangleShape2D_ypdag")
+
+[node name="Grounded" type="RayCast2D" parent="."]
+target_position = Vector2(0, 12)
+collision_mask = 3
+
 [node name="SideDetect" type="RayCast2D" parent="."]
 target_position = Vector2(10, 0)
+
+[node name="AttackWait" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
 
 [connection signal="area_entered" from="PlanetDetect" to="." method="_on_planet_detect_area_entered"]
 [connection signal="area_exited" from="PlanetDetect" to="." method="_on_planet_detect_area_exited"]
@@ -46,3 +63,4 @@ target_position = Vector2(10, 0)
 [connection signal="area_exited" from="PlayerDetect" to="." method="_on_player_detect_area_exited"]
 [connection signal="body_entered" from="PlayerDetect" to="." method="_on_player_detect_body_entered"]
 [connection signal="body_exited" from="PlayerDetect" to="." method="_on_player_detect_body_exited"]
+[connection signal="timeout" from="AttackWait" to="." method="_on_attack_wait_timeout"]
