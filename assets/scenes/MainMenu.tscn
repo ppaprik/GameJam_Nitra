@@ -1,11 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://dxk3f5ta4ee0n"]
+[gd_scene load_steps=16 format=3 uid="uid://dxk3f5ta4ee0n"]
 
 [ext_resource type="Script" path="res://assets/scripts/main_menu.gd" id="1_j8luo"]
-[ext_resource type="Texture2D" uid="uid://dr87x0diqk744" path="res://assets/graphics/planets/Planet 3.png" id="2_ci8qw"]
-[ext_resource type="Texture2D" uid="uid://d4hpgqbonl7h" path="res://assets/graphics/planets/Boss Planet.png" id="3_ibnf6"]
+[ext_resource type="Texture2D" uid="uid://crv1ccubyn1qt" path="res://assets/graphics/planets/Planet 3.png" id="2_ci8qw"]
+[ext_resource type="Texture2D" uid="uid://cf2oim78axvar" path="res://assets/graphics/title.png" id="2_fj7jq"]
+[ext_resource type="Texture2D" uid="uid://dorr0ybb8hy0i" path="res://assets/graphics/planets/Boss Planet.png" id="3_ibnf6"]
 [ext_resource type="PackedScene" uid="uid://dr3ekjgn0xjq2" path="res://assets/components/particles/Vulkano.tscn" id="3_ses0y"]
-[ext_resource type="Texture2D" uid="uid://yvhash0itpit" path="res://assets/graphics/planets/Starter Planet Alternative.png" id="4_qulmm"]
-[ext_resource type="Texture2D" uid="uid://78jgr840siw6" path="res://assets/graphics/Sprites/Player/Player sprite.png" id="5_2nrp3"]
+[ext_resource type="Texture2D" uid="uid://df7hpqv53ggbs" path="res://assets/graphics/planets/Starter Planet Alternative.png" id="4_qulmm"]
+[ext_resource type="Texture2D" uid="uid://c7cvtnd07vgms" path="res://assets/graphics/Sprites/Player/Player sprite.png" id="5_2nrp3"]
+[ext_resource type="PackedScene" uid="uid://s0aru26exx8y" path="res://assets/components/particles/Stars.tscn" id="7_d7awq"]
+[ext_resource type="AudioStream" uid="uid://cc27fu4m34eig" path="res://assets/sounds/soundeffects/Menu select.mp3" id="8_oj5nn"]
+[ext_resource type="AudioStream" uid="uid://d3blenkasv2qe" path="res://assets/sounds/music/Main Theme.mp3" id="9_lxve8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sgt5h"]
 bg_color = Color(1, 1, 1, 1)
@@ -50,12 +54,18 @@ animations = [{
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_j8luo")
 
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(574, 89)
+scale = Vector2(0.84879, 0.84879)
+texture = ExtResource("2_fj7jq")
+
 [node name="Planet3" type="Sprite2D" parent="."]
-position = Vector2(970, 36)
+position = Vector2(1059, 539)
+scale = Vector2(0.752, 0.752)
 texture = ExtResource("2_ci8qw")
 
 [node name="Vulkano" parent="." instance=ExtResource("3_ses0y")]
-position = Vector2(168, 520)
+position = Vector2(174, 592)
 
 [node name="BossPlanet" type="Sprite2D" parent="."]
 position = Vector2(154, 680)
@@ -101,11 +111,6 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_ymkfy")
 text = "Quit"
 
-[node name="StarterPlanetAlternative" type="Sprite2D" parent="."]
-position = Vector2(1079, 593)
-scale = Vector2(0.636, 0.636)
-texture = ExtResource("4_qulmm")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(1039, 404)
@@ -115,5 +120,23 @@ animation = &"idle"
 frame_progress = 0.854082
 flip_h = true
 
+[node name="Stars" parent="." instance=ExtResource("7_d7awq")]
+position = Vector2(410, 813)
+
+[node name="Menu_confirm" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_oj5nn")
+
+[node name="Menu_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_lxve8")
+volume_db = -10.0
+
+[node name="StarterPlanetAlternative" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(1053, 25)
+scale = Vector2(1.094, 1.094)
+texture = ExtResource("4_qulmm")
+
+[connection signal="mouse_entered" from="Control/VBoxContainer/Start" to="." method="_on_start_mouse_entered"]
 [connection signal="pressed" from="Control/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="mouse_entered" from="Control/VBoxContainer/Quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="Control/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
