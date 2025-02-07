@@ -108,6 +108,7 @@ func _on_texture_progress_bar_value_changed(value: float) -> void:
 		$DamageBox.set_deferred("monitorable", false)
 		$Collision.set_deferred("disabled", true)
 		$TextureProgressBar.visible = false
+		$HurtBox.set_deferred("monitoring", false)
 
 func _on_hurt_box_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	$TextureProgressBar.value = $TextureProgressBar.value - area.damage

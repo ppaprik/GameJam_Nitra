@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://s0aru26exx8y"]
 
-[ext_resource type="Texture2D" uid="uid://bmqrrquxokcdo" path="res://assets/graphics/sprites/stars/Stars sprite.png" id="1_1k8dn"]
+[ext_resource type="Texture2D" uid="uid://dbj2kk18160bl" path="res://assets/graphics/sprites/stars/Stars sprite.png" id="1_1k8dn"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bdecb"]
 particles_animation = true
@@ -46,6 +46,7 @@ anim_offset_max = 1.0
 [node name="Stars" type="Node2D"]
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = -10
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_bdecb")
 scale = Vector2(9, 9)

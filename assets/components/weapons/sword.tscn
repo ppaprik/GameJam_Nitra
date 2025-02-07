@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b2503mg8sg6hw"]
 
 [ext_resource type="PackedScene" uid="uid://bher7e1g4u0d8" path="res://assets/components/weapons/weapon_base.tscn" id="1_uu0mw"]
-[ext_resource type="Texture2D" uid="uid://c1d73in33pso3" path="res://assets/graphics/Sprites/sword/weapons_new2_sword.png" id="2_uxlcl"]
+[ext_resource type="Texture2D" uid="uid://cb47orc0jqdt4" path="res://assets/graphics/Sprites/sword/weapons_new2_sword.png" id="2_uxlcl"]
 [ext_resource type="Script" path="res://assets/scripts/damage_box_weapon.gd" id="3_6tjem"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tgbeq"]

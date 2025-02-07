@@ -16,17 +16,30 @@ var velocity_up = null
 
 var jumped = false
 var jump_finished = false
+var weapons = [preload("res://assets/components/weapons/bow.tscn"),  preload("res://assets/components/weapons/sword.tscn")]
+var current_weapon = 0
 
+var zoom = -0.01
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("shoot"):
-		$Weapon.shoot()
-	
 	if $TextureProgressBar.value != 0 and $Freeze.is_stopped():
 		direction_to_planet = null
 		direction_up = null
 		velocity_to_planet = null
 		velocity_up = null
+		
+		if Input.is_action_pressed("shoot"):
+			$Weapon.shoot()
+	
+		if Input.is_action_pressed("switch_w") and $FreezeWeaponSwitch.is_stopped():
+			current_weapon += 1
+			if current_weapon == 2:
+				current_weapon = 0
+			var new_w = weapons[current_weapon].instantiate()
+			new_w.name = "Weapon"
+			remove_child($Weapon)
+			add_child(new_w)
+			$FreezeWeaponSwitch.start()
 		
 		var mouse_p = get_global_mouse_position()
 		$Weapon.rotation = atan2(mouse_p.y - global_position.y, mouse_p.x - global_position.x) - rotation
@@ -77,8 +90,11 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 	else:
 		if $Freeze.is_stopped():
-			velocity_gravity += velocity_to_planet * -1 * GRAVITY
-			velocity = velocity_gravity * delta
+			if global_position:
+				direction_to_planet = atan2(global_position.y - current_planet.global_position.y, global_position.x - current_planet.global_position.x)
+				velocity_to_planet = Vector2(cos(direction_to_planet), sin(direction_to_planet))
+				velocity_gravity += velocity_to_planet * -1 * GRAVITY
+				velocity = velocity_gravity * delta
 		move_and_slide()
 
 func _on_planet_detect_area_entered(area: Area2D) -> void:
@@ -106,5 +122,20 @@ func _on_texture_progress_bar_value_changed(value: float) -> void:
 	
 func launch(new_velocity):
 	$Freeze.start()
+	$CameraZoom.start()
+	velocity_jump = Vector2.ZERO
+	velocity_gravity = Vector2.ZERO
 	velocity = new_velocity
-	
+
+func _on_camera_zoom_timeout() -> void:
+	print("f")
+	if zoom > 0:
+		$Camera.zoom += Vector2(zoom, zoom)
+		if $Camera.zoom.x >= 1:
+			zoom *= -1
+		$CameraZoom.stop()
+	else:
+		$Camera.zoom += Vector2(zoom, zoom)
+		if $Camera.zoom.x <= 1:
+			zoom *= -1
+			

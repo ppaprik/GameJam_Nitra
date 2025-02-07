@@ -112,7 +112,7 @@ position = Vector2(1039, 404)
 scale = Vector2(4.46875, 4.46875)
 sprite_frames = SubResource("SpriteFrames_04eon")
 animation = &"idle"
-frame_progress = 0.420768
+frame_progress = 0.854082
 flip_h = true
 
 [connection signal="pressed" from="Control/VBoxContainer/Start" to="." method="_on_start_pressed"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c56awkyjtn0vy"]
+[gd_scene load_steps=8 format=3 uid="uid://c56awkyjtn0vy"]
 
-[ext_resource type="Texture2D" uid="uid://cv3m81virb223" path="res://assets/graphics/planets/Starter Planet Alternative.png" id="1_wdj01"]
-[ext_resource type="PackedScene" uid="uid://s0aru26exx8y" path="res://assets/components/Stars.tscn" id="2_jsfx1"]
-[ext_resource type="PackedScene" uid="uid://qwd630s2ffmr" path="res://assets/components/jump_pad.tscn" id="3_abnys"]
+[ext_resource type="Script" path="res://assets/scripts/planet.gd" id="1_i7mco"]
+[ext_resource type="Texture2D" uid="uid://yvhash0itpit" path="res://assets/graphics/planets/Starter Planet Alternative.png" id="1_wdj01"]
+[ext_resource type="PackedScene" uid="uid://s0aru26exx8y" path="res://assets/components/particles/Stars.tscn" id="2_jsfx1"]
+[ext_resource type="PackedScene" uid="uid://co56tdxkfpucl" path="res://assets/components/jump_pad.tscn" id="3_abnys"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qp8h7"]
 friction = 0.0
@@ -16,17 +17,18 @@ radius = 500.0
 [node name="Planet" type="StaticBody2D"]
 collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_qp8h7")
+script = ExtResource("1_i7mco")
 
 [node name="Stars" parent="." instance=ExtResource("2_jsfx1")]
 
 [node name="Graphics" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("1_wdj01")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0l65f")
 
 [node name="Gravity" type="Area2D" parent="."]
-visible = false
 light_mask = 0
 collision_layer = 2
 collision_mask = 0

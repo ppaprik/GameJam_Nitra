@@ -1,13 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2n4rnxqxbrf5"]
+[gd_scene load_steps=8 format=3 uid="uid://b2n4rnxqxbrf5"]
 
 [ext_resource type="PackedScene" uid="uid://c56awkyjtn0vy" path="res://assets/components/Planet.tscn" id="1_xh4vn"]
 [ext_resource type="PackedScene" uid="uid://drj1f5a4c0p4v" path="res://assets/components/player.tscn" id="2_p2m6u"]
+[ext_resource type="Texture2D" uid="uid://cq880odnxqhwu" path="res://assets/graphics/planets/Planet 2.png" id="2_yivx3"]
+[ext_resource type="Texture2D" uid="uid://blkm5ksvgqb12" path="res://assets/graphics/planets/Starter Planet.png" id="3_minns"]
 [ext_resource type="PackedScene" uid="uid://cyihi8vmrq4yd" path="res://assets/components/enemies/Cobra.tscn" id="4_bfsle"]
+[ext_resource type="Texture2D" uid="uid://dr87x0diqk744" path="res://assets/graphics/planets/Planet 3.png" id="4_ifc0q"]
+[ext_resource type="Texture2D" uid="uid://d4hpgqbonl7h" path="res://assets/graphics/planets/Boss Planet.png" id="4_vavx3"]
 
 [node name="Space" type="Node2D"]
 
 [node name="Planet" parent="." instance=ExtResource("1_xh4vn")]
 rotation = -1.44344
+
+[node name="Planet2" parent="." instance=ExtResource("1_xh4vn")]
+position = Vector2(-2218, -315)
+rotation = 0.981875
+scale = Vector2(1.5, 1.5)
+img = ExtResource("2_yivx3")
+
+[node name="Planet3" parent="." instance=ExtResource("1_xh4vn")]
+position = Vector2(-818, -1233)
+rotation = -3.09615
+scale = Vector2(0.5, 0.5)
+img = ExtResource("3_minns")
+
+[node name="Planet4" parent="." instance=ExtResource("1_xh4vn")]
+position = Vector2(-965, 1112)
+rotation = 1.71981
+img = ExtResource("4_ifc0q")
+
+[node name="Planet5" parent="." instance=ExtResource("1_xh4vn")]
+position = Vector2(1220, 1543)
+scale = Vector2(2, 2)
+img = ExtResource("4_vavx3")
 
 [node name="Player" parent="." instance=ExtResource("2_p2m6u")]
 position = Vector2(-305, -100)

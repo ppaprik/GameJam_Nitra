@@ -4,10 +4,11 @@ extends CharacterBody2D
 var current_planet = null
 
 func _physics_process(delta: float) -> void:
-	var direction_to_planet = atan2(global_position.y - current_planet.global_position.y, global_position.x - current_planet.global_position.x)
-	var velocity_to_planet = Vector2(cos(direction_to_planet), sin(direction_to_planet))
-	velocity += velocity_to_planet * -1 * GRAVITY * delta
-	rotation = velocity.angle()
+	if current_planet:
+		var direction_to_planet = atan2(global_position.y - current_planet.global_position.y, global_position.x - current_planet.global_position.x)
+		var velocity_to_planet = Vector2(cos(direction_to_planet), sin(direction_to_planet))
+		velocity += velocity_to_planet * -1 * GRAVITY * delta
+		rotation = velocity.angle()
 	
 	move_and_slide()
 

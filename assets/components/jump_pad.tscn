@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://qwd630s2ffmr"]
+[gd_scene load_steps=4 format=3 uid="uid://co56tdxkfpucl"]
 
 [ext_resource type="Script" path="res://assets/scripts/jump_pad.gd" id="1_dn3eu"]
-[ext_resource type="Texture2D" uid="uid://dwlwxq8mob0gg" path="res://assets/graphics/Sprites/Health Bar/BAR.png" id="2_u7lap"]
+[ext_resource type="Texture2D" uid="uid://mcxftmxkmadk" path="res://assets/graphics/Sprites/Jump pad.png" id="2_kqhk0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g8e5g"]
 size = Vector2(36.1057, 10)
@@ -14,9 +14,10 @@ script = ExtResource("1_dn3eu")
 scale = Vector2(0.997072, 1)
 shape = SubResource("RectangleShape2D_g8e5g")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="JumpPad" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(1.1875, 1.4375)
-texture = ExtResource("2_u7lap")
+position = Vector2(-1.19209e-07, -2)
+scale = Vector2(0.875, 0.875)
+texture = ExtResource("2_kqhk0")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
