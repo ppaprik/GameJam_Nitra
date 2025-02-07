@@ -84,8 +84,8 @@ func _physics_process(delta: float) -> void:
 			if jump_finished:
 				$Graphics.play("on_fall")
 			elif Input.is_action_just_pressed("move_Jump") or jumped:
-				jumped = true
 				$Graphics.play("jump")
+				jumped = true
 			elif direction:
 				$Graphics.play("run")
 			else:
