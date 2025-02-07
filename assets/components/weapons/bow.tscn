@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bher7e1g4u0d8" path="res://assets/components/weapons/weapon_base.tscn" id="1_0elds"]
 [ext_resource type="PackedScene" uid="uid://js3ccgxjputi" path="res://assets/components/weapons/bullets/arrow.tscn" id="2_4x53i"]
-[ext_resource type="Texture2D" uid="uid://dagmcop5c52fq" path="res://assets/graphics/Sprites/bow/bow sprite.png" id="2_gbfan"]
+[ext_resource type="Texture2D" uid="uid://cr77jkkg4lke4" path="res://assets/graphics/Sprites/bow/bow sprite.png" id="2_gbfan"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p0pyg"]
 atlas = ExtResource("2_gbfan")

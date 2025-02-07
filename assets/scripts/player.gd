@@ -86,8 +86,8 @@ func _physics_process(delta: float) -> void:
 			if jump_finished:
 				$Graphics.play("on_fall")
 			elif Input.is_action_just_pressed("move_Jump") or jumped:
-				$Graphics.play("jump")
-				jumped = true
+					jumped = true
+					$Graphics.play("jump")
 			elif direction:
 				$Graphics.play("run")
 			else:
@@ -118,6 +118,8 @@ func _on_graphics_animation_finished() -> void:
 		jumped = false
 	if $Graphics.animation == "on_fall":
 		jump_finished = false
+	if $Graphics.animation == "die":
+		get_tree().change_scene_to_file("res://assets/scenes/MainMenu.tscn")
 
 func _on_hurt_box_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	$TextureProgressBar.value = $TextureProgressBar.value - area.damage
@@ -129,6 +131,7 @@ func _on_texture_progress_bar_value_changed(value: float) -> void:
 	if value == 0:
 		$TextureProgressBar.visible = false
 		$Graphics.play("die")
+		
 	
 func launch(new_velocity):
 	$Freeze.start()

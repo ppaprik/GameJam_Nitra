@@ -196,19 +196,20 @@ animations = [{
 }]
 
 [node name="Phoenix" instance=ExtResource("1_adou5")]
+SPEED = 3000
+DETECTION_RANGE = 250
+damage = 15.0
+damage_period = 0.5
+health = 30
 
 [node name="Collision" parent="." index="0"]
-visible = false
 position = Vector2(-0.5, -8.5)
 
-[node name="CollisionShape2D" parent="PlanetDetect" index="0"]
-visible = false
-
-[node name="PlayerDetect" parent="." index="2"]
-visible = false
+[node name="PlanetDetect" parent="." index="1"]
+visible = true
 
 [node name="CollisionShape2D" parent="DamageBox" index="0"]
-position = Vector2(0, 19.5)
+position = Vector2(0, 30)
 
 [node name="Grounded" parent="." index="4"]
 target_position = Vector2(0, 68)

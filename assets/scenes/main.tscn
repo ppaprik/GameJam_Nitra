@@ -1,14 +1,27 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2n4rnxqxbrf5"]
+[gd_scene load_steps=20 format=3 uid="uid://b2n4rnxqxbrf5"]
 
+[ext_resource type="Script" path="res://assets/scripts/main.gd" id="1_6i70a"]
 [ext_resource type="PackedScene" uid="uid://c56awkyjtn0vy" path="res://assets/components/Planet.tscn" id="1_xh4vn"]
 [ext_resource type="PackedScene" uid="uid://drj1f5a4c0p4v" path="res://assets/components/player.tscn" id="2_p2m6u"]
-[ext_resource type="Texture2D" uid="uid://c22ap3o71emex" path="res://assets/graphics/planets/Planet 2.png" id="2_yivx3"]
-[ext_resource type="Texture2D" uid="uid://btcr85f5j58lx" path="res://assets/graphics/planets/Weird Moon.png" id="3_dpiw7"]
-[ext_resource type="Texture2D" uid="uid://s28jnhfy2lpc" path="res://assets/graphics/planets/Starter Planet.png" id="3_minns"]
-[ext_resource type="Texture2D" uid="uid://8hifdxb7mi3s" path="res://assets/graphics/planets/Planet 3.png" id="4_ifc0q"]
-[ext_resource type="Texture2D" uid="uid://cs1i43jbfheei" path="res://assets/graphics/planets/Boss Planet.png" id="4_vavx3"]
+[ext_resource type="Texture2D" uid="uid://c00t3pipu6cxg" path="res://assets/graphics/planets/Planet 2.png" id="2_yivx3"]
+[ext_resource type="Texture2D" uid="uid://bw585d0u4q2nq" path="res://assets/graphics/planets/Weird Moon.png" id="3_dpiw7"]
+[ext_resource type="Texture2D" uid="uid://cwi5am2674tby" path="res://assets/graphics/planets/Starter Planet.png" id="3_minns"]
+[ext_resource type="Texture2D" uid="uid://crv1ccubyn1qt" path="res://assets/graphics/planets/Planet 3.png" id="4_ifc0q"]
+[ext_resource type="Texture2D" uid="uid://dorr0ybb8hy0i" path="res://assets/graphics/planets/Boss Planet.png" id="4_vavx3"]
+[ext_resource type="Texture2D" uid="uid://nd8x8cq0fu2b" path="res://assets/graphics/Jump.png" id="8_qo7qf"]
+[ext_resource type="Texture2D" uid="uid://ctnaa62bbq638" path="res://assets/graphics/Move.png" id="9_8b1aj"]
+[ext_resource type="Texture2D" uid="uid://ry0k7wf6ner1" path="res://assets/graphics/andNattack.png" id="10_pdy50"]
+[ext_resource type="PackedScene" uid="uid://cl0vcf5maq2wm" path="res://assets/components/enemies/Crab.tscn" id="11_8kioh"]
+[ext_resource type="Texture2D" uid="uid://bhgyud42le3q7" path="res://assets/graphics/launchpad.png" id="12_dtvl5"]
+[ext_resource type="PackedScene" uid="uid://cyihi8vmrq4yd" path="res://assets/components/enemies/Cobra.tscn" id="12_qklf2"]
+[ext_resource type="PackedScene" uid="uid://beomdqaq8egm" path="res://assets/components/enemies/Boss.tscn" id="13_nsddv"]
+[ext_resource type="PackedScene" uid="uid://bkj6510fqey1c" path="res://assets/components/enemies/Phoenix.tscn" id="14_7suc4"]
+[ext_resource type="PackedScene" uid="uid://c2obcmgfmllqu" path="res://assets/components/enemies/Porcupine.tscn" id="16_euh3t"]
+[ext_resource type="PackedScene" uid="uid://dvjigxqan47d8" path="res://assets/components/enemies/Ratfolk.tscn" id="17_8nl7q"]
+[ext_resource type="AudioStream" uid="uid://cq8dcmax3vpvi" path="res://assets/sounds/music/Tutorial.mp3" id="19_f6i2c"]
 
 [node name="Space" type="Node2D"]
+script = ExtResource("1_6i70a")
 
 [node name="Planet" parent="." instance=ExtResource("1_xh4vn")]
 rotation = -1.43207
@@ -43,4 +56,123 @@ scale = Vector2(0.5, 0.5)
 img = ExtResource("3_minns")
 
 [node name="Player" parent="." instance=ExtResource("2_p2m6u")]
-position = Vector2(3280, -299)
+position = Vector2(2052, 957)
+
+[node name="Jump" type="Sprite2D" parent="."]
+position = Vector2(2159.89, -304.382)
+rotation = 1.79769
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("8_qo7qf")
+
+[node name="Move" type="Sprite2D" parent="."]
+position = Vector2(2190.89, -298.382)
+rotation = 1.79769
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("9_8b1aj")
+
+[node name="AndNattack" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(2217, -272)
+rotation = 1.79769
+scale = Vector2(0.455, 0.455)
+texture = ExtResource("10_pdy50")
+
+[node name="Launchpad" type="Sprite2D" parent="."]
+position = Vector2(1795, -322)
+rotation = -1.76278
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_dtvl5")
+
+[node name="Cobra" parent="." instance=ExtResource("12_qklf2")]
+position = Vector2(1988, -502)
+
+[node name="Boss" parent="." instance=ExtResource("13_nsddv")]
+position = Vector2(1608, 1803)
+
+[node name="Phoenix" parent="." instance=ExtResource("14_7suc4")]
+position = Vector2(823, 2103)
+
+[node name="Phoenix2" parent="." instance=ExtResource("14_7suc4")]
+position = Vector2(1218, 2123)
+
+[node name="Phoenix3" parent="." instance=ExtResource("14_7suc4")]
+position = Vector2(558, 1840)
+
+[node name="Phoenix4" parent="." instance=ExtResource("14_7suc4")]
+position = Vector2(1058, 925)
+
+[node name="Phoenix5" parent="." instance=ExtResource("14_7suc4")]
+position = Vector2(1530, 1992)
+
+[node name="Phoenix6" parent="." instance=ExtResource("14_7suc4")]
+position = Vector2(1695, 1584)
+
+[node name="Phoenix7" parent="." instance=ExtResource("14_7suc4")]
+position = Vector2(1610, 1239)
+
+[node name="Phoenix8" parent="." instance=ExtResource("14_7suc4")]
+position = Vector2(1361, 967)
+
+[node name="Cobra2" parent="." instance=ExtResource("12_qklf2")]
+position = Vector2(-7, -333)
+
+[node name="Cobra3" parent="." instance=ExtResource("12_qklf2")]
+position = Vector2(-340, 12)
+
+[node name="Cobra4" parent="." instance=ExtResource("12_qklf2")]
+position = Vector2(-18, 324)
+
+[node name="Cobra5" parent="." instance=ExtResource("12_qklf2")]
+position = Vector2(314, 7)
+
+[node name="Crab" parent="." instance=ExtResource("11_8kioh")]
+position = Vector2(-2105, -754)
+
+[node name="Crab2" parent="." instance=ExtResource("11_8kioh")]
+position = Vector2(-2251, 133)
+
+[node name="Crab3" parent="." instance=ExtResource("11_8kioh")]
+position = Vector2(-1831, -607)
+
+[node name="Crab4" parent="." instance=ExtResource("11_8kioh")]
+position = Vector2(-2677, -165)
+
+[node name="Crab5" parent="." instance=ExtResource("11_8kioh")]
+position = Vector2(-2698, -458)
+
+[node name="Porcupine" parent="." instance=ExtResource("16_euh3t")]
+position = Vector2(-2523, 74)
+
+[node name="Porcupine2" parent="." instance=ExtResource("16_euh3t")]
+position = Vector2(-2499, -697)
+
+[node name="EnemyBase" parent="." instance=ExtResource("17_8nl7q")]
+position = Vector2(-218, -1281)
+
+[node name="EnemyBase2" parent="." instance=ExtResource("17_8nl7q")]
+position = Vector2(-216, -1485)
+
+[node name="EnemyBase3" parent="." instance=ExtResource("17_8nl7q")]
+position = Vector2(-422, -1557)
+
+[node name="Porcupine3" parent="." instance=ExtResource("16_euh3t")]
+position = Vector2(-1611, 1275)
+
+[node name="Porcupine4" parent="." instance=ExtResource("16_euh3t")]
+position = Vector2(-1347, 1350)
+
+[node name="Crab6" parent="." instance=ExtResource("11_8kioh")]
+position = Vector2(-1143, 1272)
+
+[node name="EnemyBase4" parent="." instance=ExtResource("17_8nl7q")]
+position = Vector2(-1712, 1037)
+
+[node name="Cobra6" parent="." instance=ExtResource("12_qklf2")]
+position = Vector2(-1635, 792)
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_f6i2c")
+volume_db = -10.0
+max_distance = 1e+17
+
+[connection signal="finished" from="Music" to="." method="_on_music_finished"]

@@ -224,6 +224,10 @@ animations = [{
 }]
 
 [node name="Cobra" instance=ExtResource("1_5l3xd")]
+SPEED = 4000
+DETECTION_RANGE = 150
+damage_period = 0.3
+health = 25
 
 [node name="Graphics" type="AnimatedSprite2D" parent="." index="0"]
 texture_filter = 1

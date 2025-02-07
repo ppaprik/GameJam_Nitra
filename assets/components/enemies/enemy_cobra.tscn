@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://f0dwl012kug2"]
 
 [ext_resource type="PackedScene" uid="uid://cd6t7nhbdlht8" path="res://assets/components/enemies/enemy_base.tscn" id="1_ydbtj"]
-[ext_resource type="Texture2D" uid="uid://d3mkd5kgjnql8" path="res://assets/graphics/player.png" id="2_ebyqg"]
+[ext_resource type="Texture2D" uid="uid://dxtchf5p7gijf" path="res://assets/graphics/player.png" id="2_ebyqg"]
 [ext_resource type="PackedScene" uid="uid://dvb0mlxwxjlc4" path="res://assets/components/enemies/AI/enemy_ai_move_towards_jump.tscn" id="3_50w7h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s6ejt"]

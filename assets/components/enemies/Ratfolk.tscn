@@ -1,7 +1,7 @@
 [gd_scene load_steps=34 format=3 uid="uid://dvjigxqan47d8"]
 
 [ext_resource type="PackedScene" uid="uid://cd6t7nhbdlht8" path="res://assets/components/enemies/enemy_base.tscn" id="1_1fv1s"]
-[ext_resource type="Texture2D" uid="uid://dgl7uwspawe2n" path="res://assets/graphics/Sprites/enemies/Ratfolk Axe Sprite.png" id="2_bkxc1"]
+[ext_resource type="Texture2D" uid="uid://cf1m6kavxeqfv" path="res://assets/graphics/Sprites/enemies/Ratfolk Axe Sprite.png" id="2_bkxc1"]
 [ext_resource type="PackedScene" uid="uid://2bm2y7t1mdl1" path="res://assets/components/enemies/AI/enemy_ai_move_towards.tscn" id="3_nut47"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qirtf"]
@@ -231,7 +231,11 @@ animations = [{
 }]
 
 [node name="EnemyBase" instance=ExtResource("1_1fv1s")]
-damage = 5.0
+SPEED = 4500
+DETECTION_RANGE = 200
+damage = 15.0
+damage_period = 1.0
+health = 20
 
 [node name="Collision" parent="." index="0"]
 position = Vector2(-3, -2)
@@ -246,7 +250,7 @@ target_position = Vector2(0, 9)
 target_position = Vector2(8, 0)
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
-position = Vector2(0.5, -2)
+position = Vector2(0.5, -1.5)
 
 [node name="Graphics" type="AnimatedSprite2D" parent="." index="9"]
 texture_filter = 1
