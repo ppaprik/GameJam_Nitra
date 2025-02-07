@@ -59,6 +59,7 @@ func _physics_process(delta: float) -> void:
 			$Graphics.animation = "on_fall"
 		elif (velocity_jump != Vector2.ZERO and direction) or velocity_jump != Vector2.ZERO:
 			$Graphics.animation = "jump"
+			#print($Graphics.frame_progress)
 		elif direction:
 			$Graphics.animation = "run"
 		else:
@@ -73,8 +74,8 @@ func _physics_process(delta: float) -> void:
 
 func _on_planet_detect_area_entered(area: Area2D) -> void:
 	current_planet = area.get_parent()
-	
-	
+
+
 func _on_planet_detect_area_exited(_area: Area2D) -> void:
 	current_planet = null
 
