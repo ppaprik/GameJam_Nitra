@@ -19,7 +19,13 @@ var jump_finished = false
 var weapons = [preload("res://assets/components/weapons/bow.tscn"),  preload("res://assets/components/weapons/sword.tscn")]
 var current_weapon = 0
 
-var zoom = -0.01
+var def_zoom = 0.04
+var zoom = -def_zoom
+
+func _ready() -> void:
+	velocity = Vector2(-1000, 0)
+	$CameraZoom.start()
+	$Freeze.start()
 
 func _physics_process(delta: float) -> void:
 	if $TextureProgressBar.value != 0 and $Freeze.is_stopped():
@@ -122,20 +128,29 @@ func _on_texture_progress_bar_value_changed(value: float) -> void:
 	
 func launch(new_velocity):
 	$Freeze.start()
+	zoom = -abs(zoom)
 	$CameraZoom.start()
 	velocity_jump = Vector2.ZERO
 	velocity_gravity = Vector2.ZERO
 	velocity = new_velocity
 
 func _on_camera_zoom_timeout() -> void:
-	print("f")
 	if zoom > 0:
 		$Camera.zoom += Vector2(zoom, zoom)
-		if $Camera.zoom.x >= 1:
-			zoom *= -1
-		$CameraZoom.stop()
+		zoom = lerp(zoom, 0.01, 0.01)
+		if $Camera.zoom.x >= 2:
+			$Camera.zoom = Vector2(2, 2)
+			zoom = -def_zoom
+		else:
+			$CameraZoom.start()
 	else:
 		$Camera.zoom += Vector2(zoom, zoom)
-		if $Camera.zoom.x <= 1:
-			zoom *= -1
-			
+		zoom = lerp(zoom, 0.01, 0.01)
+		if $Camera.zoom.x <= 0.3:
+			zoom = def_zoom
+			$CameraPause.start()
+		else:
+			$CameraZoom.start()
+
+func _on_camera_pause_timeout() -> void:
+	$CameraZoom.start()

@@ -372,7 +372,12 @@ wait_time = 0.5
 one_shot = true
 
 [node name="CameraZoom" type="Timer" parent="."]
-wait_time = 0.5
+process_callback = 0
+wait_time = 0.01
+one_shot = true
+
+[node name="CameraPause" type="Timer" parent="."]
+wait_time = 0.4
 one_shot = true
 
 [connection signal="animation_finished" from="Graphics" to="." method="_on_graphics_animation_finished"]
@@ -381,3 +386,4 @@ one_shot = true
 [connection signal="area_shape_entered" from="HurtBox" to="." method="_on_hurt_box_area_shape_entered"]
 [connection signal="value_changed" from="TextureProgressBar" to="." method="_on_texture_progress_bar_value_changed"]
 [connection signal="timeout" from="CameraZoom" to="." method="_on_camera_zoom_timeout"]
+[connection signal="timeout" from="CameraPause" to="." method="_on_camera_pause_timeout"]

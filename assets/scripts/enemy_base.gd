@@ -21,8 +21,6 @@ var velocity_up = null
 
 var move_direction: int = 0
 var move_jump: bool = false
-var jumped = false
-var jump_finished = false
 
 func _enter_tree() -> void:
 	$PlayerDetect/CollisionShape2D.shape.radius = DETECTION_RANGE
@@ -67,15 +65,6 @@ func _physics_process(delta: float) -> void:
 				
 				if not $SideDetect.is_colliding():
 					velocity_move += (velocity_up) * move_direction * SPEED
-					
-			#--------------------------------------------------
-			# ANIMATIONS
-			if move_jump:
-				$Graphics.play("jump")
-			elif move_direction:
-				$Graphics.play("run")
-			else:
-				$Graphics.play("idle")
 			
 			velocity = (velocity_gravity + velocity_jump + velocity_move) * delta
 		
@@ -90,9 +79,6 @@ func _physics_process(delta: float) -> void:
 			velocity = velocity_gravity * delta
 			move_and_slide()
 
-func _on_graphics_animation_finished() -> void:
-	pass
-	
 func _on_planet_detect_area_entered(area: Area2D) -> void:
 	current_planet = area.get_parent()
 
@@ -129,4 +115,3 @@ func _on_hurt_box_area_shape_entered(area_rid: RID, area: Area2D, area_shape_ind
 	
 	if area.get_parent().get_class() == "CharacterBody2D":
 		get_parent().remove_child(area.get_parent())
-		jump_finished = true
