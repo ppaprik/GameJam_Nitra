@@ -1,0 +1,89 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxk3f5ta4ee0n"]
+
+[ext_resource type="Script" path="res://assets/scripts/main_menu.gd" id="1_j8luo"]
+[ext_resource type="Texture2D" uid="uid://cwsoplg5dyw8e" path="res://assets/graphics/planets/Planet 3.png" id="2_ci8qw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_reu0j"]
+texture = ExtResource("2_ci8qw")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sgt5h"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ymkfy"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 5
+shadow_offset = Vector2(0, 3)
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_j8luo")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1150.0
+offset_bottom = 649.0
+
+[node name="Panel" type="Panel" parent="Control"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -709.0
+offset_top = -708.5
+offset_right = 709.0
+offset_bottom = 709.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_reu0j")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -249.0
+offset_top = -139.5
+offset_right = 249.0
+offset_bottom = 139.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 19
+
+[node name="Start" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_sgt5h")
+text = "Start"
+
+[node name="Quit" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_ymkfy")
+text = "Quit"
+
+[connection signal="pressed" from="Control/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
