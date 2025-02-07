@@ -37,8 +37,6 @@ shape = SubResource("CircleShape2D_dowmm")
 
 [node name="JumpPad" parent="." instance=ExtResource("3_abnys")]
 position = Vector2(0, -247)
-
-[node name="Spawner" type="Timer" parent="."]
-one_shot = true
+collision_mask = 0
 
 [connection signal="area_shape_entered" from="Gravity" to="." method="_on_gravity_area_shape_entered"]

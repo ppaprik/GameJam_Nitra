@@ -12,7 +12,7 @@ func _enter_tree() -> void:
 	add_child(timer)
 
 func _physics_process(_delta: float) -> void:
-	if parent.current_player:
+	if parent.current_player and parent.current_player.direction_to_planet:
 		var angle_diff = parent.current_player.direction_to_planet - parent.direction_to_planet
 		# normalize angle
 		if angle_diff > PI:

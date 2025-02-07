@@ -1,22 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://b2n4rnxqxbrf5"]
+[gd_scene load_steps=8 format=3 uid="uid://b2n4rnxqxbrf5"]
 
 [ext_resource type="PackedScene" uid="uid://c56awkyjtn0vy" path="res://assets/components/Planet.tscn" id="1_xh4vn"]
 [ext_resource type="PackedScene" uid="uid://drj1f5a4c0p4v" path="res://assets/components/player.tscn" id="2_p2m6u"]
 [ext_resource type="Texture2D" uid="uid://c22ap3o71emex" path="res://assets/graphics/planets/Planet 2.png" id="2_yivx3"]
 [ext_resource type="Texture2D" uid="uid://btcr85f5j58lx" path="res://assets/graphics/planets/Weird Moon.png" id="3_dpiw7"]
 [ext_resource type="Texture2D" uid="uid://s28jnhfy2lpc" path="res://assets/graphics/planets/Starter Planet.png" id="3_minns"]
-[ext_resource type="PackedScene" uid="uid://cyihi8vmrq4yd" path="res://assets/components/enemies/Cobra.tscn" id="4_bfsle"]
 [ext_resource type="Texture2D" uid="uid://8hifdxb7mi3s" path="res://assets/graphics/planets/Planet 3.png" id="4_ifc0q"]
 [ext_resource type="Texture2D" uid="uid://cs1i43jbfheei" path="res://assets/graphics/planets/Boss Planet.png" id="4_vavx3"]
-[ext_resource type="PackedScene" uid="uid://cl0vcf5maq2wm" path="res://assets/components/enemies/Crab.tscn" id="9_2resa"]
-[ext_resource type="PackedScene" uid="uid://dvjigxqan47d8" path="res://assets/components/enemies/Ratfolk.tscn" id="10_m7jbu"]
-<<<<<<< Updated upstream
-[ext_resource type="PackedScene" path="res://assets/components/enemies/Boss.tscn" id="11_vxcfm"]
-=======
-[ext_resource type="PackedScene" uid="uid://beomdqaq8egm" path="res://assets/components/enemies/Boss.tscn" id="11_vxcfm"]
-[ext_resource type="PackedScene" uid="uid://bkj6510fqey1c" path="res://assets/components/enemies/Phoenix.tscn" id="12_i5vxj"]
-[ext_resource type="PackedScene" uid="uid://c2obcmgfmllqu" path="res://assets/components/enemies/Porcupine.tscn" id="13_l7asr"]
->>>>>>> Stashed changes
 
 [node name="Space" type="Node2D"]
 
@@ -53,45 +43,4 @@ scale = Vector2(0.5, 0.5)
 img = ExtResource("3_minns")
 
 [node name="Player" parent="." instance=ExtResource("2_p2m6u")]
-position = Vector2(4142, -303)
-SPEED = 10000.0
-
-[node name="Cobra" parent="." instance=ExtResource("4_bfsle")]
-position = Vector2(-195, -284)
-
-[node name="Cobra2" parent="." instance=ExtResource("4_bfsle")]
-position = Vector2(169, -296)
-
-[node name="Cobra3" parent="." instance=ExtResource("4_bfsle")]
-position = Vector2(338, -123)
-
-[node name="Cobra4" parent="." instance=ExtResource("4_bfsle")]
-position = Vector2(1983, -509)
-
-[node name="Cobra5" parent="." instance=ExtResource("4_bfsle")]
-position = Vector2(1976, -190)
-
-[node name="EnemyBase" parent="." instance=ExtResource("10_m7jbu")]
-position = Vector2(2049, -217)
-
-[node name="EnemyBase2" parent="." instance=ExtResource("9_2resa")]
-position = Vector2(2049, -478)
-
-[node name="EnemyBase3" parent="." instance=ExtResource("11_vxcfm")]
-position = Vector2(1653, 1614)
-DETECTION_RANGE = 200
-
-[node name="Phoenix" parent="." instance=ExtResource("12_i5vxj")]
-position = Vector2(1467, 1941)
-
-[node name="Phoenix2" parent="." instance=ExtResource("12_i5vxj")]
-position = Vector2(738, 1967)
-
-[node name="Phoenix3" parent="." instance=ExtResource("12_i5vxj")]
-position = Vector2(607, 1810)
-
-[node name="Porcupine" parent="." instance=ExtResource("13_l7asr")]
-position = Vector2(-1904, -25)
-
-[node name="Porcupine2" parent="." instance=ExtResource("13_l7asr")]
-position = Vector2(-2640, -324)
+position = Vector2(1142, -182)
