@@ -2,15 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://c56awkyjtn0vy" path="res://assets/components/Planet.tscn" id="1_xh4vn"]
 [ext_resource type="PackedScene" uid="uid://drj1f5a4c0p4v" path="res://assets/components/player.tscn" id="2_p2m6u"]
-[ext_resource type="Texture2D" uid="uid://ditehfbnjrkjg" path="res://assets/graphics/planets/Planet 2.png" id="2_yivx3"]
-[ext_resource type="Texture2D" uid="uid://bdki1solhp07x" path="res://assets/graphics/planets/Weird Moon.png" id="3_dpiw7"]
-[ext_resource type="Texture2D" uid="uid://bxskuwffd7tw1" path="res://assets/graphics/planets/Starter Planet.png" id="3_minns"]
+[ext_resource type="Texture2D" uid="uid://c22ap3o71emex" path="res://assets/graphics/planets/Planet 2.png" id="2_yivx3"]
+[ext_resource type="Texture2D" uid="uid://btcr85f5j58lx" path="res://assets/graphics/planets/Weird Moon.png" id="3_dpiw7"]
+[ext_resource type="Texture2D" uid="uid://s28jnhfy2lpc" path="res://assets/graphics/planets/Starter Planet.png" id="3_minns"]
 [ext_resource type="PackedScene" uid="uid://cyihi8vmrq4yd" path="res://assets/components/enemies/Cobra.tscn" id="4_bfsle"]
-[ext_resource type="Texture2D" uid="uid://c8y7chodo5qpj" path="res://assets/graphics/planets/Planet 3.png" id="4_ifc0q"]
-[ext_resource type="Texture2D" uid="uid://d10kpahe7a54r" path="res://assets/graphics/planets/Boss Planet.png" id="4_vavx3"]
+[ext_resource type="Texture2D" uid="uid://8hifdxb7mi3s" path="res://assets/graphics/planets/Planet 3.png" id="4_ifc0q"]
+[ext_resource type="Texture2D" uid="uid://cs1i43jbfheei" path="res://assets/graphics/planets/Boss Planet.png" id="4_vavx3"]
 [ext_resource type="PackedScene" uid="uid://cl0vcf5maq2wm" path="res://assets/components/enemies/Crab.tscn" id="9_2resa"]
 [ext_resource type="PackedScene" uid="uid://dvjigxqan47d8" path="res://assets/components/enemies/Ratfolk.tscn" id="10_m7jbu"]
-[ext_resource type="PackedScene" uid="uid://beomdqaq8egm" path="res://assets/components/enemies/Boss.tscn" id="11_vxcfm"]
+[ext_resource type="PackedScene" path="res://assets/components/enemies/Boss.tscn" id="11_vxcfm"]
 
 [node name="Space" type="Node2D"]
 
