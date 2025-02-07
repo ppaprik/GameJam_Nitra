@@ -24,7 +24,7 @@ color_ramp = SubResource("GradientTexture1D_7jkxi")
 
 [node name="Vulkano" type="Node2D"]
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="VulkanoParticles" type="GPUParticles2D" parent="."]
 scale = Vector2(2, 2)
 amount = 400
 process_material = SubResource("ParticleProcessMaterial_gpcln")

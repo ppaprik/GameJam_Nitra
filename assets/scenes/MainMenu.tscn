@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxk3f5ta4ee0n"]
+[gd_scene load_steps=12 format=3 uid="uid://dxk3f5ta4ee0n"]
 
 [ext_resource type="Script" path="res://assets/scripts/main_menu.gd" id="1_j8luo"]
-[ext_resource type="Texture2D" uid="uid://cwsoplg5dyw8e" path="res://assets/graphics/planets/Planet 3.png" id="2_ci8qw"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_reu0j"]
-texture = ExtResource("2_ci8qw")
+[ext_resource type="Texture2D" uid="uid://dr87x0diqk744" path="res://assets/graphics/planets/Planet 3.png" id="2_ci8qw"]
+[ext_resource type="Texture2D" uid="uid://d4hpgqbonl7h" path="res://assets/graphics/planets/Boss Planet.png" id="3_ibnf6"]
+[ext_resource type="PackedScene" uid="uid://dr3ekjgn0xjq2" path="res://assets/components/particles/Vulkano.tscn" id="3_ses0y"]
+[ext_resource type="Texture2D" uid="uid://yvhash0itpit" path="res://assets/graphics/planets/Starter Planet Alternative.png" id="4_qulmm"]
+[ext_resource type="Texture2D" uid="uid://78jgr840siw6" path="res://assets/graphics/Sprites/Player/Player sprite.png" id="5_2nrp3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sgt5h"]
 bg_color = Color(1, 1, 1, 1)
@@ -24,32 +25,47 @@ corner_radius_bottom_left = 16
 shadow_size = 5
 shadow_offset = Vector2(0, 3)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6rqe"]
+atlas = ExtResource("5_2nrp3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpcw5"]
+atlas = ExtResource("5_2nrp3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_04eon"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6rqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpcw5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}]
+
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_j8luo")
+
+[node name="Planet3" type="Sprite2D" parent="."]
+position = Vector2(970, 36)
+texture = ExtResource("2_ci8qw")
+
+[node name="Vulkano" parent="." instance=ExtResource("3_ses0y")]
+position = Vector2(168, 520)
+
+[node name="BossPlanet" type="Sprite2D" parent="."]
+position = Vector2(154, 680)
+texture = ExtResource("3_ibnf6")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1150.0
 offset_bottom = 649.0
-
-[node name="Panel" type="Panel" parent="Control"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -709.0
-offset_top = -708.5
-offset_right = 709.0
-offset_bottom = 709.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxTexture_reu0j")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 texture_filter = 1
@@ -84,6 +100,20 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_ymkfy")
 text = "Quit"
+
+[node name="StarterPlanetAlternative" type="Sprite2D" parent="."]
+position = Vector2(1079, 593)
+scale = Vector2(0.636, 0.636)
+texture = ExtResource("4_qulmm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1039, 404)
+scale = Vector2(4.46875, 4.46875)
+sprite_frames = SubResource("SpriteFrames_04eon")
+animation = &"idle"
+frame_progress = 0.420768
+flip_h = true
 
 [connection signal="pressed" from="Control/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
