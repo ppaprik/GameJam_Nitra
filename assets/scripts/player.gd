@@ -107,6 +107,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_planet_detect_area_entered(area: Area2D) -> void:
 		current_planet = area.get_parent()
+		area.get_parent().start()
 
 func _on_planet_detect_area_exited(_area: Area2D) -> void:
 	current_planet = null

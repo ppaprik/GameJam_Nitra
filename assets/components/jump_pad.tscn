@@ -43,6 +43,6 @@ texture_filter = 1
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_f5vfg")
 autoplay = "default"
-frame_progress = 0.0972308
+frame_progress = 0.385498
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
