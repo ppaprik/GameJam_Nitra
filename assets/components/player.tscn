@@ -364,6 +364,9 @@ texture_progress = ExtResource("5_piebu")
 
 [node name="Weapon" parent="." instance=ExtResource("6_i7u48")]
 
+[node name="Freeze" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="animation_finished" from="Graphics" to="." method="_on_graphics_animation_finished"]
 [connection signal="area_entered" from="PlanetDetect" to="." method="_on_planet_detect_area_entered"]
 [connection signal="area_exited" from="PlanetDetect" to="." method="_on_planet_detect_area_exited"]

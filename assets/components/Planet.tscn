@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c56awkyjtn0vy"]
+[gd_scene load_steps=7 format=3 uid="uid://c56awkyjtn0vy"]
 
 [ext_resource type="Texture2D" uid="uid://cv3m81virb223" path="res://assets/graphics/planets/Starter Planet Alternative.png" id="1_wdj01"]
 [ext_resource type="PackedScene" uid="uid://s0aru26exx8y" path="res://assets/components/Stars.tscn" id="2_jsfx1"]
+[ext_resource type="PackedScene" uid="uid://qwd630s2ffmr" path="res://assets/components/jump_pad.tscn" id="3_abnys"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qp8h7"]
 friction = 0.0
@@ -10,7 +11,7 @@ friction = 0.0
 radius = 245.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dowmm"]
-radius = 1000.0
+radius = 500.0
 
 [node name="Planet" type="StaticBody2D"]
 collision_layer = 2
@@ -33,3 +34,6 @@ monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gravity"]
 shape = SubResource("CircleShape2D_dowmm")
+
+[node name="JumpPad" parent="." instance=ExtResource("3_abnys")]
+position = Vector2(0, -247)

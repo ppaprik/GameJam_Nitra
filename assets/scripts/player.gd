@@ -22,7 +22,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
 		$Weapon.shoot()
 	
-	if $TextureProgressBar.value != 0:
+	if $TextureProgressBar.value != 0 and $Freeze.is_stopped():
 		direction_to_planet = null
 		direction_up = null
 		velocity_to_planet = null
@@ -76,8 +76,9 @@ func _physics_process(delta: float) -> void:
 			
 		move_and_slide()
 	else:
-		velocity_gravity += velocity_to_planet * -1 * GRAVITY
-		velocity = velocity_gravity * delta
+		if $Freeze.is_stopped():
+			velocity_gravity += velocity_to_planet * -1 * GRAVITY
+			velocity = velocity_gravity * delta
 		move_and_slide()
 
 func _on_planet_detect_area_entered(area: Area2D) -> void:
@@ -102,4 +103,8 @@ func _on_texture_progress_bar_value_changed(value: float) -> void:
 	if value == 0:
 		$TextureProgressBar.visible = false
 		$Graphics.play("die")
+	
+func launch(new_velocity):
+	$Freeze.start()
+	velocity = new_velocity
 	

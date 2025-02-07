@@ -7,9 +7,10 @@
 [node name="Space" type="Node2D"]
 
 [node name="Planet" parent="." instance=ExtResource("1_xh4vn")]
+rotation = -1.44344
 
 [node name="Player" parent="." instance=ExtResource("2_p2m6u")]
-position = Vector2(11, -330)
+position = Vector2(-305, -100)
 SPEED = 10000.0
 
 [node name="Cobra" parent="." instance=ExtResource("4_bfsle")]
