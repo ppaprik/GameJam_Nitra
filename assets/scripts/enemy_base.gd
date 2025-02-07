@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var GRAVITY: int = 1000
 @export var JUMP_VELOCITY: int = 20000
 @export var DETECTION_RANGE: int = 100
-@export var damage: int = 5
+@export var damage: float = 5
 @export var damage_period: float = 0.2
 @export var health: int = 10
 

@@ -1,7 +1,7 @@
 [gd_scene load_steps=33 format=3 uid="uid://cyihi8vmrq4yd"]
 
 [ext_resource type="PackedScene" uid="uid://cd6t7nhbdlht8" path="res://assets/components/enemies/enemy_base.tscn" id="1_5l3xd"]
-[ext_resource type="Texture2D" uid="uid://vmq5ukhlf77y" path="res://assets/graphics/Sprites/enemies/Cobra Sprite.png" id="2_xapob"]
+[ext_resource type="Texture2D" uid="uid://bhy735oeojpwf" path="res://assets/graphics/Sprites/enemies/Cobra Sprite.png" id="2_xapob"]
 [ext_resource type="PackedScene" uid="uid://2bm2y7t1mdl1" path="res://assets/components/enemies/AI/enemy_ai_move_towards.tscn" id="3_waiqh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hnut7"]
