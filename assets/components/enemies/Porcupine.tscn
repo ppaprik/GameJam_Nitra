@@ -1,0 +1,158 @@
+[gd_scene load_steps=22 format=3 uid="uid://c2obcmgfmllqu"]
+
+[ext_resource type="PackedScene" uid="uid://cd6t7nhbdlht8" path="res://assets/components/enemies/enemy_base.tscn" id="1_84pw0"]
+[ext_resource type="Texture2D" uid="uid://lpm6caowogor" path="res://assets/graphics/Sprites/enemies/Porcupine Sprite.png" id="2_ltmja"]
+[ext_resource type="PackedScene" uid="uid://2bm2y7t1mdl1" path="res://assets/components/enemies/AI/enemy_ai_move_towards.tscn" id="3_xvrjm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8mf8"]
+atlas = ExtResource("2_ltmja")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fo4fc"]
+atlas = ExtResource("2_ltmja")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_on18r"]
+atlas = ExtResource("2_ltmja")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6l8x1"]
+atlas = ExtResource("2_ltmja")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5exl"]
+atlas = ExtResource("2_ltmja")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a21u6"]
+atlas = ExtResource("2_ltmja")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4c3q"]
+atlas = ExtResource("2_ltmja")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jl0pr"]
+atlas = ExtResource("2_ltmja")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iaqji"]
+atlas = ExtResource("2_ltmja")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atj6v"]
+atlas = ExtResource("2_ltmja")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6hv3"]
+atlas = ExtResource("2_ltmja")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_da4yr"]
+atlas = ExtResource("2_ltmja")
+region = Rect2(128, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jr7c"]
+atlas = ExtResource("2_ltmja")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nhtp"]
+atlas = ExtResource("2_ltmja")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4txd"]
+atlas = ExtResource("2_ltmja")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8x6p"]
+atlas = ExtResource("2_ltmja")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nb8hn"]
+atlas = ExtResource("2_ltmja")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d0w5e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8mf8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fo4fc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_on18r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6l8x1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f5exl")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a21u6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4c3q")
+}],
+"loop": false,
+"name": &"die",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jl0pr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iaqji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atj6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6hv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_da4yr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jr7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nhtp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4txd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8x6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nb8hn")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}]
+
+[node name="Porcupine" instance=ExtResource("1_84pw0")]
+
+[node name="Graphics" type="AnimatedSprite2D" parent="." index="9"]
+texture_filter = 1
+position = Vector2(1, -10)
+sprite_frames = SubResource("SpriteFrames_d0w5e")
+animation = &"run"
+autoplay = "idle"
+
+[node name="EnemyAI_move_towards_jump" parent="." index="10" instance=ExtResource("3_xvrjm")]
