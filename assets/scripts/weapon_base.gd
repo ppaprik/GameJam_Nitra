@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var damage = 5
-@export var damage_period = 10.5
+@export var damage_period = 0.5
 @export var bullet:PackedScene = null
 @export var bullet_speed = 200
 @onready var shoot_fx: AudioStreamPlayer2D = $"../Shoot_fx"
