@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
 
-@export var SPEED = 5000.0
-@export var GRAVITY = 1000.0
-@export var JUMP_VELOCITY = 20000.0
+@export var SPEED: int = 5000
+@export var GRAVITY: int = 1000
+@export var JUMP_VELOCITY: int = 20000
+@export var DETECTION_RANGE: int = 100
 
 var current_player: CharacterBody2D = null
 var current_planet: StaticBody2D = null
@@ -17,6 +18,9 @@ var velocity_up = null
 
 var move_direction: int = 0
 var move_jump: bool = false
+
+func _enter_tree() -> void:
+	$PlayerDetect/CollisionShape2D.shape.radius = DETECTION_RANGE
 
 func _physics_process(delta: float) -> void:
 	direction_to_planet = null
@@ -46,8 +50,13 @@ func _physics_process(delta: float) -> void:
 		# MOVE
 		var velocity_move = Vector2.ZERO
 		if move_direction:
-			velocity_move += (velocity_up) * move_direction * SPEED
+			$SideDetect.target_position.x = move_direction * 10
+			if $SideDetect.target_position.x == 0:
+				$SideDetect.target_position.x = -10
 			$Graphics.flip_h = move_direction == -1
+			
+			if not $SideDetect.is_colliding():
+				velocity_move += (velocity_up) * move_direction * SPEED
 		
 		velocity = (velocity_gravity + velocity_jump + velocity_move) * delta
 	move_and_slide()

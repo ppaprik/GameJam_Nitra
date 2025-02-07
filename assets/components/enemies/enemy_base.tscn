@@ -28,7 +28,7 @@ monitorable = false
 shape = SubResource("CircleShape2D_gpvrg")
 
 [node name="Grounded" type="RayCast2D" parent="."]
-target_position = Vector2(0, 11)
+target_position = Vector2(0, 15)
 collision_mask = 2
 
 [node name="PlayerDetect" type="Area2D" parent="."]
@@ -41,7 +41,7 @@ shape = SubResource("CircleShape2D_io8xo")
 autostart = true
 
 [node name="SideDetect" type="RayCast2D" parent="."]
-target_position = Vector2(24, 0)
+target_position = Vector2(10, 0)
 
 [connection signal="area_entered" from="PlanetDetect" to="." method="_on_planet_detect_area_entered"]
 [connection signal="area_exited" from="PlanetDetect" to="." method="_on_planet_detect_area_exited"]
