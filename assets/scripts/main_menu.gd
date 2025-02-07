@@ -1,7 +1,6 @@
 extends Node2D
 
 var particles
-var is_quit_hovered: bool = false  # Track if quit button is hovered
 
 @onready var menu_confirm: AudioStreamPlayer2D = $Menu_confirm
 @onready var menu_music: AudioStreamPlayer2D = $Menu_music
@@ -12,17 +11,22 @@ func _ready():
 		particles.lifetime = 1.5  # Ensure particles exist before modifying
 	menu_music.play()
 
+
 func _physics_process(delta: float) -> void:
 	$AnimatedSprite2D.play("idle")
 
+
 func _on_start_pressed() -> void:
-	menu_confirm.play()
 	get_tree().change_scene_to_file("res://assets/scenes/main.tscn")
+
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()
+
+
+func _on_quit_mouse_entered() -> void:
+	menu_confirm.play()
 
 
 func _on_start_mouse_entered() -> void:
 	menu_confirm.play()
-
-
-func _on_quit_mouse_entered() -> void:
-		menu_confirm.play()
