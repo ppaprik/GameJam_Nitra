@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var SPEED = 5000.0
 @export var GRAVITY = 1000.0
 @export var JUMP_VELOCITY = 20000.0
+@onready var jump_fx: AudioStreamPlayer = $Jump_fx
 
 var current_planet: StaticBody2D = null
 var velocity_jump: Vector2 = Vector2.ZERO
@@ -68,6 +69,7 @@ func _physics_process(delta: float) -> void:
 				# JUMP
 				if Input.is_action_just_pressed("move_Jump") and velocity_jump == Vector2.ZERO:
 					velocity_jump = velocity_to_planet * JUMP_VELOCITY
+					jump_fx.play()
 			else:
 				velocity_gravity += velocity_to_planet * -1 * GRAVITY
 				

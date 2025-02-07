@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://drj1f5a4c0p4v"]
+[gd_scene load_steps=49 format=3 uid="uid://drj1f5a4c0p4v"]
 
 [ext_resource type="Script" path="res://assets/scripts/player.gd" id="1_0tkcj"]
 [ext_resource type="Texture2D" uid="uid://78jgr840siw6" path="res://assets/graphics/Sprites/Player/Player sprite.png" id="2_3c28g"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bsf1d0k5vmyid" path="res://assets/graphics/Sprites/Health Bar/FRAME.png" id="4_53mla"]
 [ext_resource type="Texture2D" uid="uid://dis7nrnpkiwe3" path="res://assets/graphics/Sprites/Health Bar/BAR.png" id="5_piebu"]
 [ext_resource type="PackedScene" uid="uid://cjoo5wxfyqd6b" path="res://assets/components/weapons/bow.tscn" id="6_i7u48"]
+[ext_resource type="AudioStream" uid="uid://by25d3tudodv6" path="res://assets/sounds/soundeffects/jump.mp3" id="7_kcoxf"]
+[ext_resource type="AudioStream" uid="uid://cedbmfuh576uq" path="res://assets/sounds/soundeffects/bow shot.mp3" id="8_yygts"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oyoeu"]
 atlas = ExtResource("2_3c28g")
@@ -380,6 +382,14 @@ one_shot = true
 [node name="CameraPause" type="Timer" parent="."]
 wait_time = 0.4
 one_shot = true
+
+[node name="Jump_fx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_kcoxf")
+volume_db = -16.0
+
+[node name="Shoot_fx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_yygts")
+max_distance = 100.0
 
 [connection signal="animation_finished" from="Graphics" to="." method="_on_graphics_animation_finished"]
 [connection signal="area_entered" from="PlanetDetect" to="." method="_on_planet_detect_area_entered"]
