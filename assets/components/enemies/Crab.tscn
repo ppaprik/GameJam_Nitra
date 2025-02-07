@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://cl0vcf5maq2wm"]
 
 [ext_resource type="PackedScene" uid="uid://cd6t7nhbdlht8" path="res://assets/components/enemies/enemy_base.tscn" id="1_r51d7"]
-[ext_resource type="Texture2D" uid="uid://dhfyncgm2a8pv" path="res://assets/graphics/Sprites/enemies/Crab Sprite.png" id="2_yqq5n"]
+[ext_resource type="Texture2D" uid="uid://dpywojfdtqx5x" path="res://assets/graphics/Sprites/enemies/Crab Sprite.png" id="2_yqq5n"]
 [ext_resource type="PackedScene" uid="uid://2bm2y7t1mdl1" path="res://assets/components/enemies/AI/enemy_ai_move_towards.tscn" id="3_m45bj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g6ivs"]
@@ -145,6 +145,9 @@ damage = 1.0
 [node name="Collision" parent="." index="0"]
 position = Vector2(0, 0.5)
 
+[node name="PlanetDetect" parent="." index="1"]
+visible = true
+
 [node name="CollisionShape2D" parent="PlayerDetect" index="0"]
 position = Vector2(0, -1)
 
@@ -152,7 +155,10 @@ position = Vector2(0, -1)
 position = Vector2(0, 0.5)
 
 [node name="Grounded" parent="." index="4"]
-target_position = Vector2(0, 7)
+target_position = Vector2(0, 8)
+
+[node name="SideDetect" parent="." index="5"]
+target_position = Vector2(16, 0)
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
 position = Vector2(0, 0.5)
