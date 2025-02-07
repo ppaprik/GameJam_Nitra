@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c56awkyjtn0vy"]
 
-[ext_resource type="Texture2D" uid="uid://1gkunryp53d6" path="res://assets/graphics/planets/Starter Planet Alternative.png" id="1_wdj01"]
+[ext_resource type="Texture2D" uid="uid://brquot5dkaw1x" path="res://assets/graphics/planets/Starter Planet Alternative.png" id="1_wdj01"]
 [ext_resource type="PackedScene" uid="uid://s0aru26exx8y" path="res://assets/components/Stars.tscn" id="2_jsfx1"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qp8h7"]
@@ -25,8 +25,8 @@ texture = ExtResource("1_wdj01")
 shape = SubResource("CircleShape2D_0l65f")
 
 [node name="Gravity" type="Area2D" parent="."]
+visible = false
 light_mask = 0
-visibility_layer = 0
 collision_layer = 2
 collision_mask = 0
 monitoring = false
