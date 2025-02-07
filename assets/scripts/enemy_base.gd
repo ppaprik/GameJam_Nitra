@@ -59,23 +59,26 @@ func _physics_process(delta: float) -> void:
 				velocity_move += (velocity_up) * move_direction * SPEED
 		
 		velocity = (velocity_gravity + velocity_jump + velocity_move) * delta
+	
+	if not current_player:
+		pass
+		
+	
 	move_and_slide()
 
 func _on_planet_detect_area_entered(area: Area2D) -> void:
 	current_planet = area.get_parent()
 
-func _on_planet_detect_area_exited(area: Area2D) -> void:
+func _on_planet_detect_area_exited(_area: Area2D) -> void:
 	current_planet = null
 
 func _on_player_detect_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		current_player = body
-		$PatrolTimer.stop()
 
 func _on_player_detect_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
 		current_player = null
-		$PatrolTimer.start(-1)
 
 func move(direction: int):
 	move_direction = direction

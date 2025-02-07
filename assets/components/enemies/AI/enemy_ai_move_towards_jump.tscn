@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvb0mlxwxjlc4"]
+
+[ext_resource type="Script" path="res://assets/scripts/enemy_ai_move_towards_jump.gd" id="1_i81qv"]
+
+[node name="EnemyAI_move_towards_jump" type="Node2D"]
+script = ExtResource("1_i81qv")

@@ -7,7 +7,7 @@ func _enter_tree() -> void:
 	
 	var timer = Timer.new()
 	timer.name = "PatrolTimer"
-	timer.wait_time = 3
+	timer.wait_time = 1
 	timer.connect("timeout", on_patrol_timer_timeout)
 	add_child(timer)
 
@@ -19,7 +19,7 @@ func _physics_process(_delta: float) -> void:
 			angle_diff -= 2 * PI
 		elif angle_diff < -PI:
 			angle_diff += 2 * PI
-			
+		
 		if abs(angle_diff) > 0.01:
 			parent.move(sign(angle_diff))
 		else:
@@ -27,6 +27,7 @@ func _physics_process(_delta: float) -> void:
 	else:
 		if $PatrolTimer.is_stopped():
 			$PatrolTimer.start()
+	parent.jump()
 
 func on_patrol_timer_timeout():
 	var random_val = randi() % 4

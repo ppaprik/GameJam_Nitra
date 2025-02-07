@@ -28,17 +28,14 @@ monitorable = false
 shape = SubResource("CircleShape2D_gpvrg")
 
 [node name="Grounded" type="RayCast2D" parent="."]
-target_position = Vector2(0, 15)
-collision_mask = 2
+target_position = Vector2(0, 12)
+collision_mask = 3
 
 [node name="PlayerDetect" type="Area2D" parent="."]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetect"]
 shape = SubResource("CircleShape2D_io8xo")
-
-[node name="PatrolTimer" type="Timer" parent="."]
-autostart = true
 
 [node name="SideDetect" type="RayCast2D" parent="."]
 target_position = Vector2(10, 0)
